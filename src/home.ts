@@ -109,51 +109,79 @@ swiperNavBtns.forEach((btn) => {
 	});
 });
 
-gsap.set('.orange-circle', {
-	background: '#d9d9d9',
-});
-gsap.set('.grey-line', {
-	height: '100%',
-});
+function setGsapScroll() {
+	gsap.set('.orange-circle', {
+		background: '#d9d9d9',
+	});
+	gsap.set('.grey-line', {
+		height: '100%',
+	});
 
-ScrollTrigger.create({
-	trigger: '.home-solution-grid',
-	start: 'top 75%',
-	onEnter: () => {
-		gsap.to('.orange-circle', {
-			background: '#ff872e',
-			duration: 0.3,
-			ease: 'power2.out',
-		});
-	},
-	onLeaveBack: () => {
-		gsap.to('.orange-circle', {
-			background: '#d9d9d9',
-			duration: 0.3,
-			ease: 'power2.out',
-		});
-	},
-});
-
-gsap.to('.orange-line', {
-	height: '100%',
-	scrollTrigger: {
+	ScrollTrigger.create({
 		trigger: '.home-solution-grid',
-		start: 'top 65%',
-		end: 'bottom',
-		scrub: 1,
-	},
+		start: 'top 75%',
+		onEnter: () => {
+			gsap.to('.orange-circle', {
+				background: '#ff872e',
+				duration: 0.3,
+				ease: 'power2.out',
+			});
+		},
+		onLeaveBack: () => {
+			gsap.to('.orange-circle', {
+				background: '#d9d9d9',
+				duration: 0.3,
+				ease: 'power2.out',
+			});
+		},
+	});
+
+	gsap.to('.orange-line', {
+		height: '100%',
+		scrollTrigger: {
+			trigger: '.home-solution-grid',
+			start: 'top 65%',
+			end: 'bottom',
+			scrub: 1,
+		},
+	});
+
+	gsap.to('.grey-line', {
+		height: '0%',
+		scrollTrigger: {
+			trigger: '.home-solution-grid',
+			start: 'top 65%',
+			end: 'bottom',
+			scrub: 1,
+		},
+	});
+}
+function setMobileSwiperNavigation() {
+	const distance = (
+		document.querySelector('.testimonial-video-c') as HTMLDivElement
+	).offsetHeight;
+	console.log(distance);
+	(
+		document.querySelector('.swiper-navigation-c') as HTMLDivElement
+	).style.top = `${distance / 10 + 1.5}rem`;
+}
+let isMobile = window.innerWidth < 992;
+
+if (!isMobile) {
+	setGsapScroll();
+} else {
+	setMobileSwiperNavigation();
+}
+
+window.addEventListener('resize', () => {
+	isMobile = window.innerWidth < 768;
+	if (!isMobile) {
+		setGsapScroll();
+	} else {
+		setMobileSwiperNavigation();
+	}
 });
 
-gsap.to('.grey-line', {
-	height: '0%',
-	scrollTrigger: {
-		trigger: '.home-solution-grid',
-		start: 'top 65%',
-		end: 'bottom',
-		scrub: 1,
-	},
-});
 const solutionVideos = document.querySelectorAll('.home-solution-video');
 
 solutionVideos.forEach((video) => {
@@ -161,7 +189,6 @@ solutionVideos.forEach((video) => {
 		trigger: video,
 		start: 'top 60%',
 		end: 'bottom 50%',
-		markers: true,
 		onEnter: () => {
 			(video.querySelector('video')! as HTMLVideoElement).play();
 		},
