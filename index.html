@@ -3,11 +3,980 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<link rel="stylesheet" href="/src/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Vite + TS</title>
 	</head>
 	<body>
-		<div id="app"></div>
-		<script type="module" src="/src/home.ts"></script>
+		<div class="container">
+			<div class="program-benefits-grid-wrapper w-dyn-list">
+				<div role="list" class="program-benefits-grid w-dyn-items">
+					<div role="listitem" class="w-dyn-item">
+						<div class="partner-testimonial-item">
+							<img
+								alt=""
+								loading="lazy"
+								src="https://assets-global.website-files.com/65815c2a5f11a0fdf5d8b698/658b0da5383d9bd0af45e052_image19.jpeg"
+								class="partner-testimonial-item-img"
+							/>
+							<div class="partner-testimonial-name">Andrey Kupchin</div>
+							<p class="fs-base">Ceo, Smart Energy Control</p>
+							<p class="fs-base">Partner Case Study</p>
+							<div class="partner-testimonial-audio-embed w-embed">
+								<!--<audio class="js-player">
+			<source src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3" type="audio/mpeg">
+		  Your browser does not support the audio element.
+		  </audio>
+		  -->
+
+								<div class="audio-player">
+									<audio
+										class="audio"
+										preload="auto"
+										tabindex="0"
+										controls=""
+										type="audio/mpeg"
+									>
+										<source
+											type="audio/mp3"
+											src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3"
+										/>
+										Sorry, your browser does not support HTML5 audio.
+									</audio>
+									<button class="play-pause play">
+										<svg
+											width="32"
+											height="32"
+											viewBox="0 0 32 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="play-pause-icon"
+										>
+											<circle cx="16" cy="16" r="16" fill="CurrentColor" />
+											<path
+												class="play-icon active"
+												d="M14.0105 9.83047C13.0106 9.24226 11.75 9.96324 11.75 11.1234V20.8781C11.75 22.0382 13.0106 22.7592 14.0105 22.171L22.3021 17.2936C23.288 16.7137 23.288 15.2878 22.3021 14.7078L14.0105 9.83047Z"
+												fill="white"
+											/>
+											<path
+												class="pause-icon"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.875 9.25195H14.125C14.5375 9.25195 14.875 9.58945 14.875 10.002V22.002C14.875 22.4145 14.5375 22.752 14.125 22.752H11.875C11.4625 22.752 11.125 22.4145 11.125 22.002V10.002C11.125 9.58945 11.4625 9.25195 11.875 9.25195ZM17.875 9.25195H20.125C20.5375 9.25195 20.875 9.58945 20.875 10.002V22.002C20.875 22.4145 20.5375 22.752 20.125 22.752H17.875C17.4625 22.752 17.125 22.4145 17.125 22.002V10.002C17.125 9.58945 17.4625 9.25195 17.875 9.25195Z"
+												fill="#FF872E"
+											/>
+										</svg>
+									</button>
+									<div class="progress-container">
+										<svg
+											width="86"
+											height="32"
+											viewBox="0 0 86 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="progress-svg"
+										>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="6"
+												y="12"
+												width="2"
+												height="8"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="12"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="18"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="24"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="30"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="36"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="42"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="48"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="54"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="60"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="66"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="72"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="78"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="84"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+										</svg>
+									</div>
+									<div class="track-info">
+										<span class="current-time">1:31</span>
+										<span class="duration active">3:32</span>
+									</div>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										class="volume-icon"
+									>
+										<g opacity="0.66">
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.383 3.07965C11.009 2.92565 10.579 3.01065 10.293 3.29665L6 8.00265H3C2.45 8.00265 2 8.45365 2 9.00265V15.0026C2 15.5526 2.45 16.0026 3 16.0026H6L10.293 20.7106C10.579 20.9966 11.009 21.0826 11.383 20.9276C11.757 20.7726 12 20.4076 12 20.0026V4.00265C12 3.59965 11.757 3.23265 11.383 3.07965ZM14 5.00256V7.00256C16.757 7.00256 19 9.24656 19 12.0026C19 14.7596 16.757 17.0026 14 17.0026V19.0026C17.86 19.0026 21 15.8636 21 12.0026C21 8.14356 17.86 5.00256 14 5.00256ZM14 9.00256C15.654 9.00256 17 10.3496 17 12.0026C17 13.6576 15.654 15.0026 14 15.0026V13.0026C14.551 13.0026 15 12.5536 15 12.0026C15 11.4516 14.551 11.0026 14 11.0026V9.00256Z"
+												fill="CurrentColor"
+											/>
+										</g>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="listitem" class="w-dyn-item">
+						<div class="partner-testimonial-item">
+							<img
+								alt=""
+								loading="lazy"
+								src="https://assets-global.website-files.com/65815c2a5f11a0fdf5d8b698/658b0da5383d9bd0af45e04a_image11.jpeg"
+								class="partner-testimonial-item-img"
+							/>
+							<div class="partner-testimonial-name">Darren Cooper</div>
+							<p class="fs-base">Ceo, Smart Energy Control</p>
+							<p class="fs-base">Partner Case Study</p>
+							<div class="partner-testimonial-audio-embed w-embed">
+								<!--<audio class="js-player">
+			<source src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3" type="audio/mpeg">
+		  Your browser does not support the audio element.
+		  </audio>
+		  -->
+
+								<div class="audio-player">
+									<audio
+										class="audio"
+										preload="auto"
+										tabindex="0"
+										controls=""
+										type="audio/mpeg"
+									>
+										<source
+											type="audio/mp3"
+											src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3"
+										/>
+										Sorry, your browser does not support HTML5 audio.
+									</audio>
+									<button class="play-pause play">
+										<svg
+											width="32"
+											height="32"
+											viewBox="0 0 32 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="play-pause-icon"
+										>
+											<circle cx="16" cy="16" r="16" fill="CurrentColor" />
+											<path
+												class="play-icon active"
+												d="M14.0105 9.83047C13.0106 9.24226 11.75 9.96324 11.75 11.1234V20.8781C11.75 22.0382 13.0106 22.7592 14.0105 22.171L22.3021 17.2936C23.288 16.7137 23.288 15.2878 22.3021 14.7078L14.0105 9.83047Z"
+												fill="white"
+											/>
+											<path
+												class="pause-icon"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.875 9.25195H14.125C14.5375 9.25195 14.875 9.58945 14.875 10.002V22.002C14.875 22.4145 14.5375 22.752 14.125 22.752H11.875C11.4625 22.752 11.125 22.4145 11.125 22.002V10.002C11.125 9.58945 11.4625 9.25195 11.875 9.25195ZM17.875 9.25195H20.125C20.5375 9.25195 20.875 9.58945 20.875 10.002V22.002C20.875 22.4145 20.5375 22.752 20.125 22.752H17.875C17.4625 22.752 17.125 22.4145 17.125 22.002V10.002C17.125 9.58945 17.4625 9.25195 17.875 9.25195Z"
+												fill="#FF872E"
+											/>
+										</svg>
+									</button>
+									<div class="progress-container">
+										<svg
+											width="86"
+											height="32"
+											viewBox="0 0 86 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="progress-svg"
+										>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="6"
+												y="12"
+												width="2"
+												height="8"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="12"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="18"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="24"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="30"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="36"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="42"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="48"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="54"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="60"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="66"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="72"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="78"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="84"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+										</svg>
+									</div>
+									<div class="track-info">
+										<span class="current-time">1:31</span>
+										<span class="duration active">3:32</span>
+									</div>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										class="volume-icon"
+									>
+										<g opacity="0.66">
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.383 3.07965C11.009 2.92565 10.579 3.01065 10.293 3.29665L6 8.00265H3C2.45 8.00265 2 8.45365 2 9.00265V15.0026C2 15.5526 2.45 16.0026 3 16.0026H6L10.293 20.7106C10.579 20.9966 11.009 21.0826 11.383 20.9276C11.757 20.7726 12 20.4076 12 20.0026V4.00265C12 3.59965 11.757 3.23265 11.383 3.07965ZM14 5.00256V7.00256C16.757 7.00256 19 9.24656 19 12.0026C19 14.7596 16.757 17.0026 14 17.0026V19.0026C17.86 19.0026 21 15.8636 21 12.0026C21 8.14356 17.86 5.00256 14 5.00256ZM14 9.00256C15.654 9.00256 17 10.3496 17 12.0026C17 13.6576 15.654 15.0026 14 15.0026V13.0026C14.551 13.0026 15 12.5536 15 12.0026C15 11.4516 14.551 11.0026 14 11.0026V9.00256Z"
+												fill="CurrentColor"
+											/>
+										</g>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="listitem" class="w-dyn-item">
+						<div class="partner-testimonial-item">
+							<img
+								alt=""
+								loading="lazy"
+								src="https://assets-global.website-files.com/65815c2a5f11a0fdf5d8b698/658b0da5383d9bd0af45e047_image10.jpeg"
+								class="partner-testimonial-item-img"
+							/>
+							<div class="partner-testimonial-name">Geronimo Martinez</div>
+							<p class="fs-base">President, Smartcool Partner</p>
+							<p class="fs-base">Case Study</p>
+							<div class="partner-testimonial-audio-embed w-embed">
+								<!--<audio class="js-player">
+			<source src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3" type="audio/mpeg">
+		  Your browser does not support the audio element.
+		  </audio>
+		  -->
+
+								<div class="audio-player">
+									<audio
+										class="audio"
+										preload="auto"
+										tabindex="0"
+										controls=""
+										type="audio/mpeg"
+									>
+										<source
+											type="audio/mp3"
+											src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3"
+										/>
+										Sorry, your browser does not support HTML5 audio.
+									</audio>
+									<button class="play-pause play">
+										<svg
+											width="32"
+											height="32"
+											viewBox="0 0 32 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="play-pause-icon"
+										>
+											<circle cx="16" cy="16" r="16" fill="CurrentColor" />
+											<path
+												class="play-icon active"
+												d="M14.0105 9.83047C13.0106 9.24226 11.75 9.96324 11.75 11.1234V20.8781C11.75 22.0382 13.0106 22.7592 14.0105 22.171L22.3021 17.2936C23.288 16.7137 23.288 15.2878 22.3021 14.7078L14.0105 9.83047Z"
+												fill="white"
+											/>
+											<path
+												class="pause-icon"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.875 9.25195H14.125C14.5375 9.25195 14.875 9.58945 14.875 10.002V22.002C14.875 22.4145 14.5375 22.752 14.125 22.752H11.875C11.4625 22.752 11.125 22.4145 11.125 22.002V10.002C11.125 9.58945 11.4625 9.25195 11.875 9.25195ZM17.875 9.25195H20.125C20.5375 9.25195 20.875 9.58945 20.875 10.002V22.002C20.875 22.4145 20.5375 22.752 20.125 22.752H17.875C17.4625 22.752 17.125 22.4145 17.125 22.002V10.002C17.125 9.58945 17.4625 9.25195 17.875 9.25195Z"
+												fill="#FF872E"
+											/>
+										</svg>
+									</button>
+									<div class="progress-container">
+										<svg
+											width="86"
+											height="32"
+											viewBox="0 0 86 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="progress-svg"
+										>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="6"
+												y="12"
+												width="2"
+												height="8"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="12"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="18"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="24"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="30"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="36"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="42"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="48"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="54"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="60"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="66"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="72"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="78"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="84"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+										</svg>
+									</div>
+									<div class="track-info">
+										<span class="current-time">1:31</span>
+										<span class="duration active">3:32</span>
+									</div>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										class="volume-icon"
+									>
+										<g opacity="0.66">
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.383 3.07965C11.009 2.92565 10.579 3.01065 10.293 3.29665L6 8.00265H3C2.45 8.00265 2 8.45365 2 9.00265V15.0026C2 15.5526 2.45 16.0026 3 16.0026H6L10.293 20.7106C10.579 20.9966 11.009 21.0826 11.383 20.9276C11.757 20.7726 12 20.4076 12 20.0026V4.00265C12 3.59965 11.757 3.23265 11.383 3.07965ZM14 5.00256V7.00256C16.757 7.00256 19 9.24656 19 12.0026C19 14.7596 16.757 17.0026 14 17.0026V19.0026C17.86 19.0026 21 15.8636 21 12.0026C21 8.14356 17.86 5.00256 14 5.00256ZM14 9.00256C15.654 9.00256 17 10.3496 17 12.0026C17 13.6576 15.654 15.0026 14 15.0026V13.0026C14.551 13.0026 15 12.5536 15 12.0026C15 11.4516 14.551 11.0026 14 11.0026V9.00256Z"
+												fill="CurrentColor"
+											/>
+										</g>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div role="listitem" class="w-dyn-item">
+						<div class="partner-testimonial-item">
+							<img
+								alt=""
+								loading="lazy"
+								src="https://assets-global.website-files.com/65815c2a5f11a0fdf5d8b698/658b0da5383d9bd0af45e04f_image19.jpeg"
+								class="partner-testimonial-item-img"
+							/>
+							<div class="partner-testimonial-name">Steven Martin</div>
+							<p class="fs-base">President, Smartcool Partner</p>
+							<p class="fs-base">Case Study</p>
+							<div class="partner-testimonial-audio-embed w-embed">
+								<!--<audio class="js-player">
+			<source src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3" type="audio/mpeg">
+		  Your browser does not support the audio element.
+		  </audio>
+		  -->
+								<div class="audio-player">
+									<audio
+										class="audio"
+										preload="auto"
+										tabindex="0"
+										controls=""
+										type="audio/mpeg"
+									>
+										<source
+											type="audio/mp3"
+											src="https://rick-roll-ed.github.io/Rick%20Astley%20-%20Never%20Gonna%20Give%20You%20Up%20(Video).mp3"
+										/>
+										Sorry, your browser does not support HTML5 audio.
+									</audio>
+									<button class="play-pause play">
+										<svg
+											width="32"
+											height="32"
+											viewBox="0 0 32 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="play-pause-icon"
+										>
+											<circle cx="16" cy="16" r="16" fill="CurrentColor" />
+											<path
+												class="play-icon active"
+												d="M14.0105 9.83047C13.0106 9.24226 11.75 9.96324 11.75 11.1234V20.8781C11.75 22.0382 13.0106 22.7592 14.0105 22.171L22.3021 17.2936C23.288 16.7137 23.288 15.2878 22.3021 14.7078L14.0105 9.83047Z"
+												fill="white"
+											/>
+											<path
+												class="pause-icon"
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.875 9.25195H14.125C14.5375 9.25195 14.875 9.58945 14.875 10.002V22.002C14.875 22.4145 14.5375 22.752 14.125 22.752H11.875C11.4625 22.752 11.125 22.4145 11.125 22.002V10.002C11.125 9.58945 11.4625 9.25195 11.875 9.25195ZM17.875 9.25195H20.125C20.5375 9.25195 20.875 9.58945 20.875 10.002V22.002C20.875 22.4145 20.5375 22.752 20.125 22.752H17.875C17.4625 22.752 17.125 22.4145 17.125 22.002V10.002C17.125 9.58945 17.4625 9.25195 17.875 9.25195Z"
+												fill="#FF872E"
+											/>
+										</svg>
+									</button>
+									<div class="progress-container">
+										<svg
+											width="86"
+											height="32"
+											viewBox="0 0 86 32"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+											class="progress-svg"
+										>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="6"
+												y="12"
+												width="2"
+												height="8"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="12"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="18"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="24"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="30"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="36"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="42"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="48"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="54"
+												y="9"
+												width="2"
+												height="14"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="60"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="66"
+												y="8"
+												width="2"
+												height="16"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="72"
+												y="11"
+												width="2"
+												height="10"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="78"
+												y="14"
+												width="2"
+												height="4"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+											<rect
+												class="progress-rect"
+												opacity="0.66"
+												x="84"
+												y="15"
+												width="2"
+												height="2"
+												rx="1"
+												fill="#1a1a1a"
+											/>
+										</svg>
+									</div>
+									<div class="track-info">
+										<span class="current-time">1:31</span>
+										<span class="duration active">3:32</span>
+									</div>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										class="volume-icon"
+									>
+										<g opacity="0.66">
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M11.383 3.07965C11.009 2.92565 10.579 3.01065 10.293 3.29665L6 8.00265H3C2.45 8.00265 2 8.45365 2 9.00265V15.0026C2 15.5526 2.45 16.0026 3 16.0026H6L10.293 20.7106C10.579 20.9966 11.009 21.0826 11.383 20.9276C11.757 20.7726 12 20.4076 12 20.0026V4.00265C12 3.59965 11.757 3.23265 11.383 3.07965ZM14 5.00256V7.00256C16.757 7.00256 19 9.24656 19 12.0026C19 14.7596 16.757 17.0026 14 17.0026V19.0026C17.86 19.0026 21 15.8636 21 12.0026C21 8.14356 17.86 5.00256 14 5.00256ZM14 9.00256C15.654 9.00256 17 10.3496 17 12.0026C17 13.6576 15.654 15.0026 14 15.0026V13.0026C14.551 13.0026 15 12.5536 15 12.0026C15 11.4516 14.551 11.0026 14 11.0026V9.00256Z"
+												fill="CurrentColor"
+											/>
+										</g>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="/dist/bePartner.js"></script>
 	</body>
 </html>

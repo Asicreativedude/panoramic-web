@@ -1,8 +1,277 @@
+html {
+	font-size: 0.625rem;
+}
+@media screen and (max-width: 1920px) {
+	html {
+		font-size: calc(0.5rem + 0.10416666666666667vw);
+	}
+}
+@media screen and (max-width: 960px) {
+	html {
+		font-size: 0.625rem;
+	}
+}
+
 :root {
-	--fs-xl: clamp(6rem, 6rem + 2.5vw, 9rem);
-	--fs-h1: clamp(4.4rem, 4.4rem + 2.5vw, 6.4rem);
-	--fs-h2: clamp(3.2rem, 3.2rem + 2.5vw, 4.4rem);
-	--fs-h3: clamp(2.4rem, 2.4rem + 2.5vw, 3.2rem);
-	--fs-h4: clamp(2em, 2rem + 2.5vw, 2.4rem);
-	--fs-p: clamp(1.6rem, 1.6rem + 2.5vw, 1.8rem);
+	--fs-xl: clamp(6rem, 2.793rem + 3.233vw, 8rem);
+	--fs-h1: clamp(4.4rem, 2.69rem + 1.724vw, 6rem);
+	--fs-h2: clamp(3.2rem, 1.917rem + 1.293vw, 4.4rem);
+	--fs-h3: clamp(2.4rem, 1.545rem + 0.862vw, 3.2rem);
+	--fs-h4: clamp(2rem, 1.572rem + 0.431vw, 2.4rem);
+	--fs-p: clamp(1.6rem, 1.386rem + 0.216vw, 1.8rem);
+	--fs-base: 1.6rem;
+}
+
+/* Make text look crisper and more legible in all browsers */
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+main {
+	overflow: clip;
+}
+[data-animation-type='lottie'] > svg {
+	transform: unset !important;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child,
+.w-richtext > div:first-child > :first-child {
+	margin-top: 0 !important;
+}
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext > :last-child,
+.w-richtext ol li:last-child,
+.w-richtext ul li:last-child {
+	margin-bottom: 0;
+}
+
+/* Snippet makes all link elements listed below to inherit color from their parent */
+a,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+	color: inherit;
+}
+
+.w-nav-link.w--current {
+	color: inherit !important;
+}
+/* These classes are never overwritten */
+.hide {
+	display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+	.hide,
+	.hide-tablet {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 767px) {
+	.hide-mobile-landscape {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 479px) {
+	.hide-mobile {
+		display: none !important;
+	}
+}
+
+/*Hide focus outline for main content element*/
+main:focus-visible {
+	outline: -webkit-focus-ring-color auto 0px;
+}
+/*Apply "..." After 3 lines of Text */
+[cd-style='3-lines'] {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/*Apply "..." After 2 lines of Text */
+[cd-style='2-lines'] {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/*Reset selects, buttons, and links styles*/
+.w-input,
+.w-select,
+a {
+	color: inherit;
+	text-decoration: inherit;
+	font-size: inherit;
+}
+
+/*Hide focus outline when using anchor links to go to sections on safari*/
+*:focus {
+	outline: none;
+}
+
+/* Prevents social media icons from moving on hover on safari */
+.social-icon {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	transform: translateZ(0) scale(1, 1);
+	-webkit-transform: translateZ(0) scale(1, 1);
+}
+
+@media screen and (min-width: 992px) {
+	.fs-xl {
+		font-size: var(--fs-xl);
+	}
+	.fs-h1 {
+		font-size: var(--fs-h1);
+	}
+	.fs-h2 {
+		font-size: var(--fs-h2);
+	}
+	.fs-h3 {
+		font-size: var(--fs-h3);
+	}
+	.fs-h4 {
+		font-size: var(--fs-h4);
+	}
+	p {
+		font-size: var(--fs-p);
+	}
+	.fs-base,
+	.nav-link,
+	.btn-main {
+		font-size: var(--fs-base);
+	}
+	.testimonial-text {
+		font-size: clamp(2rem, 1rem + 1.042vw, 3.2rem);
+	}
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+}
+.container {
+	width: 100%;
+	max-width: 144rem;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.program-benefits-grid {
+	grid-column-gap: 3rem;
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-auto-columns: 1fr;
+	display: grid;
+}
+.audio-player {
+	display: flex;
+	align-items: center;
+	gap: 1.2rem;
+	padding: 0.8rem;
+	background: #f6f5f2;
+	border-radius: 5rem;
+	transition: all 0.3s ease-in-out;
+}
+.audio-player.active {
+	background: #ff872e;
+}
+
+.audio {
+	width: 100%;
+	display: none; /* Hide the default HTML5 audio player */
+}
+.play-pause {
+	background: none;
+	cursor: pointer;
+	border: none;
+	transition: all 0.3s ease-in-out;
+}
+.play-pause.play {
+	color: #ff872e;
+}
+
+.play-pause.pause {
+	color: white;
+}
+
+.track-info {
+	display: flex;
+	justify-content: space-between;
+}
+
+img {
+	max-width: 100%;
+}
+
+.partner-testimonial-item {
+	grid-row-gap: 0.4rem;
+	background-color: var(--white);
+	text-align: center;
+	border-radius: 16px;
+	flex-direction: column;
+	align-items: center;
+	padding: 10.5rem 2.3rem 5.2rem;
+	display: flex;
+}
+
+.pause-icon,
+.play-icon {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.play-icon.active,
+.pause-icon.active,
+.current-time.active,
+.duration.active {
+	display: block;
+}
+
+.play-pause-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.current-time,
+.duration {
+	display: none;
+}
+.current-time {
+	color: white;
+}
+.duration {
+	color: #1a1a1a;
+}
+.progress-rect {
+	transition: all 0.3s ease-in-out;
+}
+.volume-icon {
+	color: #1a1a1a;
+}
+.volume-icon.active {
+	color: white;
 }

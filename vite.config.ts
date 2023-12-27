@@ -5,6 +5,8 @@ const config: UserConfig = {
 		rollupOptions: {
 			input: {
 				main: 'src/home.ts',
+				general: 'src/general.ts',
+				bePartner: 'src/bePartner.ts',
 				// Add more entry points as needed
 			},
 			output: {
