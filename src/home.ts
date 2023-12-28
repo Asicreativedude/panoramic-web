@@ -1,6 +1,3 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
 //init video players
 const controls = `
 <div class="plyr__controls">

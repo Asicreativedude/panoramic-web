@@ -4,8 +4,8 @@ const config: UserConfig = {
 	build: {
 		rollupOptions: {
 			input: {
-				home: 'src/home.ts',
 				general: 'src/general.ts',
+				home: 'src/home.ts',
 				bePartner: 'src/bePartner.ts',
 				findAPartner: 'src/findAPartner.ts',
 				// Add more entry points as needed

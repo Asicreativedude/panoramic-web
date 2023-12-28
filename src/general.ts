@@ -1,3 +1,7 @@
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 function updateBaseFontSize() {
 	// Calculate the current root font size in pixels
 	let rootFontSizePx = parseFloat(
@@ -13,8 +17,6 @@ function updateBaseFontSize() {
 // Update the font size on load and whenever the window is resized
 window.addEventListener('load', updateBaseFontSize);
 window.addEventListener('resize', updateBaseFontSize);
-
-// mobile burger color
 
 // foooter copyright year
 const d = new Date();

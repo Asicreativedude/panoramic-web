@@ -1,5 +1,3 @@
-gsap.registerPlugin(ScrollTrigger);
-
 const filterDropdowns = document.querySelectorAll(
 	'.find-a-partner-filter-dropdown'
 ) as NodeListOf<HTMLDivElement>;
