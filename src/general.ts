@@ -1,7 +1,3 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
 function updateBaseFontSize() {
 	// Calculate the current root font size in pixels
 	let rootFontSizePx = parseFloat(
