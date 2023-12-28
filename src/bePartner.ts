@@ -8,6 +8,7 @@ webflowBe.push(function () {
 			const pauseIcon: SVGAElement = player.querySelector('.pause-icon')!;
 			const playIcon: SVGAElement = player.querySelector('.play-icon')!;
 			const playerContainer: HTMLElement = player.parentElement!.parentElement!;
+			const muteBtn: SVGAElement = player.querySelector('.volume-icon')!;
 			if (audio !== except) {
 				audio.pause();
 				const playPauseButton: HTMLButtonElement =
@@ -21,6 +22,7 @@ webflowBe.push(function () {
 				player.querySelector('.duration')!.classList.add('active');
 				player.querySelector('.volume-icon')!.classList.remove('active');
 				playerContainer.classList.remove('active');
+				muteBtn.style.color = '#1a1a1a';
 			}
 		});
 	};
@@ -39,6 +41,18 @@ webflowBe.push(function () {
 			player.querySelector('.current-time')!;
 		const durationElement: HTMLSpanElement = player.querySelector('.duration')!;
 		const playerContainer: HTMLElement = player.parentElement!.parentElement!;
+		const muteBtn: SVGAElement = player.querySelector('.volume-icon')!;
+		muteBtn.addEventListener('click', () => {
+			if (audio.muted) {
+				audio.muted = false;
+				muteBtn.querySelector('.volume-icon-off')!.classList.remove('active');
+				muteBtn.querySelector('.volume-icon-on')!.classList.add('active');
+			} else {
+				audio.muted = true;
+				muteBtn.querySelector('.volume-icon-off')!.classList.add('active');
+				muteBtn.querySelector('.volume-icon-on')!.classList.remove('active');
+			}
+		});
 		playPauseButton.addEventListener('click', () => {
 			if (audio.paused) {
 				stopAllAudioPlayers(audio);
@@ -52,6 +66,7 @@ webflowBe.push(function () {
 				player.querySelector('.duration')!.classList.remove('active');
 				player.querySelector('.volume-icon')!.classList.add('active');
 				playerContainer.classList.add('active');
+				muteBtn.style.color = 'white';
 			} else {
 				audio.pause();
 				playPauseButton.classList.remove('pause');
@@ -63,6 +78,7 @@ webflowBe.push(function () {
 				player.querySelector('.duration')!.classList.add('active');
 				player.querySelector('.volume-icon')!.classList.remove('active');
 				playerContainer.classList.remove('active');
+				muteBtn.style.color = '#1a1a1a';
 			}
 		});
 
