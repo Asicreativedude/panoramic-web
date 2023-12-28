@@ -181,4 +181,37 @@ webflowBe.push(function () {
 			setPagesSwipers();
 		}
 	});
+
+	//form error messages
+	const submitBtn = document.querySelector('.submit-btn')!;
+	const formErrorMessages = document.querySelectorAll('.required-message');
+	const requiredFields = document.querySelectorAll(
+		'[cd="form-field"]'
+	) as NodeListOf<HTMLInputElement>;
+
+	submitBtn.addEventListener('click', () => {
+		formErrorMessages.forEach((message) => {
+			message.classList.remove('active');
+		});
+		requiredFields.forEach((field) => {
+			if (field.type === 'checkbox') {
+				field.previousElementSibling!.classList.remove('error-state');
+			}
+			field.classList.remove('error-state');
+		});
+		requiredFields.forEach((field) => {
+			if (!field.value) {
+				field
+					.parentElement!.querySelector('.required-message')!
+					.classList.add('active');
+				field.classList.add('error-state');
+			}
+			if (field.type === 'checkbox' && !field.checked) {
+				field.previousElementSibling!.classList.add('error-state');
+				field
+					.parentElement!.querySelector('.required-message')!
+					.classList.add('active');
+			}
+		});
+	});
 });
