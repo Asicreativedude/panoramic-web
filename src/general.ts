@@ -102,3 +102,20 @@ function observeElementClass(elementSelector: string) {
 	// Optional: return the observer in case you need to stop observing later
 	return observer;
 }
+
+//navigation
+const nav = document.querySelector('.nav-s')!;
+function checkScroll() {
+	if (window.pageYOffset > 0) {
+		// Remove the class if the page is scrolled down
+		nav.classList.add('is-scrolled');
+		if (window.pageYOffset > 300) {
+			nav.classList.add('is-hidden');
+		}
+	} else {
+		// Add the class back if the page is at the top
+		nav.classList.remove('is-scrolled');
+	}
+}
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('touchmove', checkScroll);

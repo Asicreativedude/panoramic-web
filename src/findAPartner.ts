@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
+
 const filterDropdowns = document.querySelectorAll(
 	'.find-a-partner-filter-dropdown'
 ) as NodeListOf<HTMLDivElement>;
@@ -22,9 +22,9 @@ document
 	.addEventListener('click', () => {
 		(document.querySelector('.filter-clear-div')! as HTMLDivElement).click();
 	});
+const dedicatedNumbers = document.querySelectorAll('[cd="dedicated-number"]');
 
 function setGsapScrollPartner() {
-	//@ts-ignore
 	gsap.set('.orange-circle', {
 		background: '#d9d9d9',
 	});
@@ -33,6 +33,29 @@ function setGsapScrollPartner() {
 	});
 	gsap.set('.grey-line', {
 		height: '100%',
+	});
+	dedicatedNumbers.forEach((number) => {
+		gsap.set(number, {
+			color: '#4C4C4C',
+		});
+		ScrollTrigger.create({
+			trigger: number,
+			start: 'center center',
+			onEnter: () => {
+				gsap.to(number, {
+					color: '#ff872e',
+					duration: 0.3,
+					ease: 'power2.out',
+				});
+			},
+			onLeaveBack: () => {
+				gsap.to(number, {
+					color: '#4C4C4C',
+					duration: 0.3,
+					ease: 'power2.out',
+				});
+			},
+		});
 	});
 
 	ScrollTrigger.create({

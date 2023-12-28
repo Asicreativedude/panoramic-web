@@ -266,3 +266,27 @@ window.addEventListener('resize', () => {
 		setExcellenceSwiper();
 	}
 });
+
+//add class to jsGlobe
+function addClassWhenInView(selector: string, className: string) {
+	const observer = new IntersectionObserver(
+		(entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add(className);
+					observer.unobserve(entry.target); // Optional: Stop observing once class is added
+				}
+			});
+		},
+		{
+			threshold: 0.5, // Adjust this value based on how much of the element should be in view
+		}
+	);
+
+	const elements = document.querySelectorAll(selector);
+	elements.forEach((element) => {
+		observer.observe(element);
+	});
+}
+
+addClassWhenInView('.js-globe', 'in-view');
