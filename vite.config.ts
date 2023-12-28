@@ -13,6 +13,7 @@ const config: UserConfig = {
 			output: {
 				entryFileNames: '[name].js', // Use [name] placeholder for the same name as input
 				assetFileNames: '[name].[ext]', // Use [name] placeholder for the same name as input
+				chunkFileNames: '[name].js', // Use [name] placeholder for the same name as input
 			},
 		},
 	},
