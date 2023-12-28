@@ -2,7 +2,6 @@ import { UserConfig } from 'vite';
 
 const config: UserConfig = {
 	build: {
-		minify: false,
 		rollupOptions: {
 			input: {
 				general: 'src/general.ts',

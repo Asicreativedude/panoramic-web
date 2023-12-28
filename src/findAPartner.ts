@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 const filterDropdowns = document.querySelectorAll(
 	'.find-a-partner-filter-dropdown'
@@ -23,6 +24,7 @@ document
 	});
 
 function setGsapScrollPartner() {
+	//@ts-ignore
 	gsap.set('.orange-circle', {
 		background: '#d9d9d9',
 	});
