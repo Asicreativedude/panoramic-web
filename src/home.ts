@@ -203,6 +203,65 @@ function setGsapScroll() {
 	});
 }
 
+function setMobileGsapScroll() {
+	const solutionLines = document.querySelectorAll('.solution-line-c');
+
+	solutionLines.forEach((div) => {
+		const orangeLine = div.querySelector('.orange-line')!;
+		const greyLine = div.querySelector('.grey-line')!;
+		const orangeCircle = div.querySelector('.orange-circle')!;
+
+		gsap.set(orangeLine, {
+			height: '0%',
+		});
+		gsap.set(greyLine, {
+			height: '75%',
+		});
+		gsap.set(orangeCircle, {
+			background: '#d9d9d9',
+		});
+
+		ScrollTrigger.create({
+			trigger: div,
+			start: 'top 75%',
+			onEnter: () => {
+				gsap.to(orangeCircle, {
+					background: '#ff872e',
+					duration: 0.3,
+					ease: 'power2.out',
+				});
+			},
+			onLeaveBack: () => {
+				gsap.to(orangeCircle, {
+					background: '#d9d9d9',
+					duration: 0.3,
+					ease: 'power2.out',
+				});
+			},
+		});
+
+		gsap.to(orangeLine, {
+			height: '75%',
+			scrollTrigger: {
+				trigger: div,
+				start: 'top center',
+				end: 'bottom 35%',
+				scrub: 1,
+			},
+		});
+
+		gsap.to(greyLine, {
+			height: '0%',
+			scrollTrigger: {
+				trigger: div,
+				start: 'top center',
+				end: 'bottom 35%',
+				scrub: 1,
+			},
+		});
+	});
+}
+
 const solutionVideos = document.querySelectorAll('.home-solution-video');
 
 solutionVideos.forEach((video) => {
@@ -255,6 +314,7 @@ if (!isMobileHome) {
 } else {
 	setMobileTestimonialSwiperNavigation();
 	setExcellenceSwiper();
+	setMobileGsapScroll();
 }
 
 window.addEventListener('resize', () => {
@@ -264,6 +324,7 @@ window.addEventListener('resize', () => {
 	} else {
 		setMobileTestimonialSwiperNavigation();
 		setExcellenceSwiper();
+		setMobileGsapScroll();
 	}
 });
 
