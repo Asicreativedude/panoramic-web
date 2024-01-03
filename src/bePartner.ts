@@ -85,6 +85,9 @@ webflowBe.push(function () {
 		audio.addEventListener('timeupdate', () => {
 			updateProgressBar(audio, svg, currentTimeElement, durationElement);
 		});
+		audio.addEventListener('loadedmetadata', () => {
+			durationElement.textContent = formatTime(audio.duration);
+		});
 
 		progressBarContainer.addEventListener('click', (e) => {
 			const rect: DOMRect = progressBarContainer.getBoundingClientRect();
