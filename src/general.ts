@@ -105,16 +105,19 @@ function observeElementClass(elementSelector: string) {
 
 //navigation
 const nav = document.querySelector('.nav-s')!;
+const navLogo = document.querySelector('.logo-svg')!;
 function checkScroll() {
 	if (window.pageYOffset > 0) {
 		// Remove the class if the page is scrolled down
 		nav.classList.add('is-scrolled');
+		navLogo.classList.add('is-scrolled');
 		if (window.pageYOffset > 300) {
 			nav.classList.add('is-hidden');
 		}
 	} else {
 		// Add the class back if the page is at the top
 		nav.classList.remove('is-scrolled');
+		navLogo.classList.remove('is-scrolled');
 	}
 }
 window.addEventListener('scroll', checkScroll);
