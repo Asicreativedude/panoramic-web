@@ -263,7 +263,10 @@ function setMobileGsapScroll() {
 }
 
 const solutionVideos = document.querySelectorAll('.home-solution-video');
-
+gsap.set('.home-solution-first-overlay-image', {
+	opacity: 0,
+	x: '-50%',
+});
 solutionVideos.forEach((video) => {
 	ScrollTrigger.create({
 		trigger: video,
@@ -271,6 +274,14 @@ solutionVideos.forEach((video) => {
 		end: 'bottom 50%',
 		onEnter: () => {
 			(video.querySelector('video')! as HTMLVideoElement).play();
+			setTimeout(() => {
+				gsap.to('.home-solution-first-overlay-image', {
+					opacity: 1,
+					x: 0,
+					duration: 0.5,
+					ease: 'power2.out',
+				});
+			}, 4000);
 		},
 		onLeave: () => {
 			(video.querySelector('video')! as HTMLVideoElement).pause();
