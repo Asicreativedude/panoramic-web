@@ -8,6 +8,7 @@ const config: UserConfig = {
 				home: 'src/home.ts',
 				bePartner: 'src/bePartner.ts',
 				findAPartner: 'src/findAPartner.ts',
+				partnerPage: 'src/partnerPage.ts',
 				// Add more entry points as needed
 			},
 			output: {
