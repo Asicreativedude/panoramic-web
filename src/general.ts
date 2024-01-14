@@ -188,15 +188,15 @@ const webflowPush = window.Webflow || [];
 if (window.location.pathname === '/') {
 	webflowPush.push(function () {
 		const homepageScript = document.createElement('script');
-		//homepageScript.src = 'https://panoramic-web.netlify.app/home.js';
-		homepageScript.src = 'http://localhost:4173/home.js';
+		homepageScript.src = 'https://panoramic-web.netlify.app/home.js';
+		// homepageScript.src = 'http://localhost:4173/home.js';
 		document.body.appendChild(homepageScript);
 	});
 } else if (window.location.pathname === '/solution') {
 	webflowPush.push(function () {
 		const solutionScript = document.createElement('script');
-		//solutionScript.src = 'https://panoramic-web.netlify.app/solution.js';
-		solutionScript.src = 'http://localhost:4173/solution.js';
+		solutionScript.src = 'https://panoramic-web.netlify.app/solution.js';
+		// solutionScript.src = 'http://localhost:4173/solution.js';
 		document.body.appendChild(solutionScript);
 	});
 }
