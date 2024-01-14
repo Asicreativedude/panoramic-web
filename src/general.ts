@@ -203,8 +203,8 @@ if (window.location.pathname === '/') {
 	webflowPush.push(function () {
 		const findAPartnerScript = document.createElement('script');
 		findAPartnerScript.src =
-			'https://panoramic-web.netlify.app/find-a-partner.js';
-		// findAPartnerScript.src = 'http://localhost:4173/find-a-partner.js';
+			'https://panoramic-web.netlify.app/findApartner.js';
+		// findAPartnerScript.src = 'http://localhost:4173/findApartner.js';
 		document.body.appendChild(findAPartnerScript);
 	});
 } else if (window.location.pathname === '/be-a-partner') {
