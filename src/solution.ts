@@ -9,6 +9,7 @@ const solutionSwiper = new Swiper('.data-integration-slider-c', {
 	speed: 500,
 	slideClass: 'data-integration-slide',
 	wrapperClass: 'data-integration-track',
+	slideActiveClass: 'isActive',
 	loop: true,
 	autoplay: {
 		delay: 4000,
@@ -42,15 +43,6 @@ containers.forEach((container, index) => {
 			setTimeout(() => {
 				tl.restart();
 				tl.pause();
-				gsap.set(markers, {
-					scale: 0,
-					transformOrigin: 'center',
-					opacity: 0,
-				});
-				gsap.set(popupImg, {
-					opacity: 0,
-					yPercent: -20,
-				});
 			}, 2500);
 		},
 	});
@@ -98,6 +90,23 @@ solutionSwiper.on('slideChangeTransitionEnd', (e: any) => {
 			child.play();
 		} else {
 			child.pause();
+		}
+	});
+});
+solutionSwiper.on('slideChangeTransitionStart', (e: any) => {
+	e.slides.forEach((slide: HTMLDivElement) => {
+		if (!slide.classList.contains('isActive') && firstload) {
+			setTimeout(() => {
+				gsap.set(slide.querySelector('.data-integration-info-img'), {
+					opacity: 0,
+					yPercent: -20,
+				});
+				gsap.set(slide.querySelector('.data-integration-mark'), {
+					scale: 0,
+					transformOrigin: 'center',
+					opacity: 0,
+				});
+			}, 150);
 		}
 	});
 });
