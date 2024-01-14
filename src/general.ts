@@ -199,4 +199,26 @@ if (window.location.pathname === '/') {
 		// solutionScript.src = 'http://localhost:4173/solution.js';
 		document.body.appendChild(solutionScript);
 	});
+} else if (window.location.pathname === '/find-a-partner') {
+	webflowPush.push(function () {
+		const findAPartnerScript = document.createElement('script');
+		findAPartnerScript.src =
+			'https://panoramic-web.netlify.app/find-a-partner.js';
+		// findAPartnerScript.src = 'http://localhost:4173/find-a-partner.js';
+		document.body.appendChild(findAPartnerScript);
+	});
+} else if (window.location.pathname === '/be-a-partner') {
+	webflowPush.push(function () {
+		const beAPartnerScript = document.createElement('script');
+		beAPartnerScript.src = 'https://panoramic-web.netlify.app/bePartner.js';
+		// beAPartnerScript.src = 'http://localhost:4173/bePartner.js';
+		document.body.appendChild(beAPartnerScript);
+	});
+} else if (window.location.pathname.includes('/partners/')) {
+	webflowPush.push(function () {
+		const partnerScript = document.createElement('script');
+		partnerScript.src = 'https://panoramic-web.netlify.app/partnerPage.js';
+		// partnerScript.src = 'http://localhost:4173/partnerPage.js';
+		document.body.appendChild(partnerScript);
+	});
 }
