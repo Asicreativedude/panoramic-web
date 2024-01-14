@@ -1,3 +1,5 @@
+import { gsap } from 'gsap';
+gsap.registerPlugin(ScrollTrigger, SplitText);
 function updateBaseFontSize() {
 	// Calculate the current root font size in pixels
 	let rootFontSizePx = parseFloat(
@@ -104,21 +106,97 @@ function observeElementClass(elementSelector: string) {
 }
 
 //navigation
-const nav = document.querySelector('.nav-s')!;
-const navLogo = document.querySelector('.logo-svg')!;
+const nav = document.querySelector('.nav-s')! as HTMLDivElement;
+const navLogo = document.querySelector('.logo-svg')! as SVGAElement;
+let lastScrollTop = 0; // Variable to keep track of the last scroll position
+
 function checkScroll() {
-	if (window.pageYOffset > 0) {
-		// Remove the class if the page is scrolled down
+	let currentScrollPos = window.pageYOffset;
+
+	if (currentScrollPos > 0) {
 		nav.classList.add('is-scrolled');
 		navLogo.classList.add('is-scrolled');
-		if (window.pageYOffset > 300) {
-			nav.classList.add('is-hidden');
+		if (window.location.pathname === '/solution') {
+			if (window.innerWidth > 991) {
+				document
+					.querySelector('.nav-button.secondary-btn')!
+					.classList.add('invert');
+			}
+		}
+		if (currentScrollPos > 500) {
+			// Add 'is-hidden' if scrolled down and more than 500px
+			if (currentScrollPos > lastScrollTop) {
+				nav.classList.add('is-hidden');
+			} else {
+				// Remove 'is-hidden' if scrolling up
+				nav.classList.remove('is-hidden');
+			}
+		} else {
+			nav.classList.remove('is-hidden');
 		}
 	} else {
-		// Add the class back if the page is at the top
 		nav.classList.remove('is-scrolled');
 		navLogo.classList.remove('is-scrolled');
+		if (window.location.pathname === '/solution') {
+			document.querySelector('.nav-logo-link')!.classList.add('white-logo');
+			document.querySelector('.burger-lottie')!.classList.remove('black-fill');
+			document
+				.querySelector('.nav-button.secondary-btn')!
+				.classList.remove('invert');
+		}
 	}
+
+	lastScrollTop = currentScrollPos; // Update the last scroll position
 }
+
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('touchmove', checkScroll);
+
+//animated titles
+const splitTitles = document.querySelectorAll('[cd="animated-title"]');
+
+splitTitles.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	ScrollTrigger.create({
+		trigger: title,
+		start: 'top 75%',
+		onEnter: () => {
+			gsap.from(split.words, 1.8, {
+				y: 140,
+				ease: 'power4.out',
+				delay: 1,
+				skewY: 17,
+				stagger: {
+					amount: 0.3,
+				},
+				onStart: () => {
+					gsap.set(title, { opacity: 1 });
+				},
+			});
+		},
+	});
+});
+
+//add scripts to pages
+//@ts-ignore
+const webflowPush = window.Webflow || [];
+if (window.location.pathname === '/') {
+	webflowPush.push(function () {
+		const homepageScript = document.createElement('script');
+		//homepageScript.src = 'https://panoramic-web.netlify.app/home.js';
+		homepageScript.src = 'http://localhost:4173/home.js';
+		document.body.appendChild(homepageScript);
+	});
+} else if (window.location.pathname === '/solution') {
+	webflowPush.push(function () {
+		const solutionScript = document.createElement('script');
+		//solutionScript.src = 'https://panoramic-web.netlify.app/solution.js';
+		solutionScript.src = 'http://localhost:4173/solution.js';
+		document.body.appendChild(solutionScript);
+	});
+}

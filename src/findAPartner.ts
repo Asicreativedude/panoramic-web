@@ -1,7 +1,3 @@
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
 const filterDropdowns = document.querySelectorAll(
 	'.filter-continent-c'
 ) as NodeListOf<HTMLDivElement>;
