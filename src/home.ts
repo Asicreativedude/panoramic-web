@@ -10,7 +10,7 @@ const controls = `
 	</svg>
 	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"  class="icon--not-pressed" role="presentation">
 		<circle cx="12" cy="12" r="11" stroke="white" stroke-width="2"/>
-		<path d="M15.5208 10.448L10.3052 7.4578C10.0248 7.29801 9.69847 7.30943 9.42826 7.49204C9.15805 7.67464 9 7.99421 9 8.34802V14.3342C9 14.688 9.15805 15.0076 9.42826 15.1902C9.57101 15.2872 9.73416 15.3385 9.89221 15.3385C10.0299 15.3385 10.1726 15.3043 10.3001 15.2301L15.5157 12.2399C15.8165 12.0687 16 11.7263 16 11.3497C16 10.973 15.8216 10.6192 15.5208 10.448Z" fill="white"/>
+		<path d="M15.5208 10.448L10.3052 7.4578C10.0248 7.29801 9.69847 7.30943 9.42826 7.49204C9.15805 7.67464 9 7.99421 9 8.34802V14.3342C9 14.688 9.15805 15.0076 9.42826 15.1902C9.57101 15.2872 9.73416 15.3385 9.89221 15.3385C10.0299 15.3385 10.1726 15.3043 10.3001 15.2301L15.5157 12.2399C15.8175 12.0687 16 11.7263 16 11.3497C16 10.973 15.8216 10.6192 15.5208 10.448Z" fill="white"/>
 		<use xlink:href="#plyr-play"></use>
 	</svg>
 	<span class="cd-video-btn-text">Play Video</span>
@@ -351,3 +351,48 @@ function addClassWhenInView(selector: string, className: string) {
 }
 
 addClassWhenInView('.js-globe', 'in-view');
+
+//animated titles
+const splitTitlesHome = document.querySelectorAll('[cd="animated-title"]')!;
+const homeHeroContent = document.querySelectorAll('[cd="home-hero-c"]')!;
+const heroHomeTl = gsap.timeline({ paused: true });
+heroHomeTl.from(homeHeroContent, {
+	autoAlpha: 0,
+	opacity: 0,
+	x: 50,
+	duration: 1,
+	ease: 'power1.out',
+});
+splitTitlesHome.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, 1.8, {
+		y: 140,
+		ease: 'power4.out',
+		skewY: 17,
+		stagger: {
+			amount: 0.3,
+		},
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+
+	ScrollTrigger.create({
+		trigger: title,
+		start: 'top 75%',
+		onEnter: () => {
+			if (!heroHomeTl.isActive()) {
+				heroHomeTl.play();
+			}
+		},
+	});
+});

@@ -1,20 +1,5 @@
 import { gsap } from 'gsap';
 gsap.registerPlugin(ScrollTrigger, SplitText);
-function updateBaseFontSize() {
-	// Calculate the current root font size in pixels
-	let rootFontSizePx = parseFloat(
-		getComputedStyle(document.documentElement).fontSize
-	);
-	// Calculate the REM equivalent for 16px
-	let fsBaseRem = 16 / rootFontSizePx;
-
-	// Update the --fs-base property
-	document.documentElement.style.setProperty('--fs-base', `${fsBaseRem}rem`);
-}
-
-// Update the font size on load and whenever the window is resized
-window.addEventListener('load', updateBaseFontSize);
-window.addEventListener('resize', updateBaseFontSize);
 
 // foooter copyright year
 const d = new Date();
@@ -151,74 +136,3 @@ function checkScroll() {
 
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('touchmove', checkScroll);
-
-//animated titles
-const splitTitles = document.querySelectorAll('[cd="animated-title"]');
-
-splitTitles.forEach((title) => {
-	const split = new SplitText(title, {
-		type: 'lines, words',
-		wordsClass: 'cd-word',
-		linesClass: 'cd-line',
-	});
-
-	ScrollTrigger.create({
-		trigger: title,
-		start: 'top 75%',
-		onEnter: () => {
-			gsap.from(split.words, 1.8, {
-				y: 140,
-				ease: 'power4.out',
-				delay: 1,
-				skewY: 17,
-				stagger: {
-					amount: 0.3,
-				},
-				onStart: () => {
-					gsap.set(title, { opacity: 1 });
-				},
-			});
-		},
-	});
-});
-
-//add scripts to pages
-//@ts-ignore
-const webflowPush = window.Webflow || [];
-if (window.location.pathname === '/') {
-	webflowPush.push(function () {
-		const homepageScript = document.createElement('script');
-		homepageScript.src = 'https://panoramic-web.netlify.app/home.js';
-		// homepageScript.src = 'http://localhost:4173/home.js';
-		document.body.appendChild(homepageScript);
-	});
-} else if (window.location.pathname === '/solution') {
-	webflowPush.push(function () {
-		const solutionScript = document.createElement('script');
-		solutionScript.src = 'https://panoramic-web.netlify.app/solution.js';
-		// solutionScript.src = 'http://localhost:4173/solution.js';
-		document.body.appendChild(solutionScript);
-	});
-} else if (window.location.pathname === '/find-a-partner') {
-	webflowPush.push(function () {
-		const findAPartnerScript = document.createElement('script');
-		findAPartnerScript.src =
-			'https://panoramic-web.netlify.app/findApartner.js';
-		// findAPartnerScript.src = 'http://localhost:4173/findApartner.js';
-		document.body.appendChild(findAPartnerScript);
-	});
-} else if (window.location.pathname === '/be-a-partner') {
-	webflowPush.push(function () {
-		const beAPartnerScript = document.createElement('script');
-		beAPartnerScript.src = 'https://panoramic-web.netlify.app/bePartner.js';
-		// beAPartnerScript.src = 'http://localhost:4173/bePartner.js';
-		document.body.appendChild(beAPartnerScript);
-	});
-} else if (window.location.pathname.includes('/partners/')) {
-	webflowPush.push(function () {
-		const partnerScript = document.createElement('script');
-		partnerScript.src = 'https://panoramic-web.netlify.app/partnerPage.js';
-		// partnerScript.src = 'http://localhost:4173/partnerPage.js';
-		document.body.appendChild(partnerScript);
-	});
-}

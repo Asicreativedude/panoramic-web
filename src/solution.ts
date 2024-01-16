@@ -167,3 +167,70 @@ function splitPaths(
 
 	return newPaths;
 }
+
+//animated titles
+const splitTitlesSolution = document.querySelectorAll('[cd="animated-title"]');
+const solutionSmallTitles = document.querySelectorAll('[cd="animated-line"]');
+const solutionHeroImg = document.querySelector('[cd="solution-hero-img"]')!;
+
+const solutionHeroTl = gsap.timeline({ paused: true });
+solutionHeroTl.from(solutionHeroImg, {
+	autoAlpha: 0,
+	yPercent: 100,
+	duration: 1,
+	ease: 'power4.out',
+});
+splitTitlesSolution.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, 1.8, {
+		y: 140,
+		ease: 'power4.out',
+		skewY: 17,
+		stagger: {
+			amount: 0.3,
+		},
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+
+	ScrollTrigger.create({
+		trigger: title,
+		start: 'top 75%',
+		onEnter: () => {
+			if (!solutionHeroTl.isActive()) {
+				solutionHeroTl.play();
+			}
+		},
+	});
+});
+
+solutionSmallTitles.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, {
+		duration: 1,
+		yPercent: 100,
+		ease: 'power4.out',
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+});
