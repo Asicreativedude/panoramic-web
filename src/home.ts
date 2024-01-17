@@ -517,7 +517,7 @@ solutionRight.forEach((div) => {
 solutionsCreatives.forEach((div) => {
 	const tl = gsap.timeline({ paused: true });
 	tl.from(div, {
-		scale: 1.3,
+		scale: 1.1,
 		duration: 1,
 		ease: 'power2.out',
 	});
