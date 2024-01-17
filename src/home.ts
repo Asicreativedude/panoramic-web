@@ -361,7 +361,7 @@ const heroHomeTl = gsap.timeline({ paused: true });
 heroHomeTl.from(homeHeroContent, {
 	autoAlpha: 0,
 	opacity: 0,
-	x: 50,
+	x: isMobileHome ? 15 : 50,
 	duration: 1,
 	ease: 'power1.out',
 });
@@ -438,7 +438,7 @@ const homeSolutionFirstTl = gsap.timeline({ paused: true });
 homeSolutionFirstTl
 	.from(solutionFirstLeft, {
 		autoAlpha: 0,
-		xPercent: -25,
+		xPercent: isMobileHome ? -10 : -25,
 		duration: 1,
 		ease: 'power4.out',
 	})
@@ -446,7 +446,7 @@ homeSolutionFirstTl
 		solutionFirstRight,
 		{
 			autoAlpha: 0,
-			xPercent: 10,
+			xPercent: isMobileHome ? 5 : 10,
 			duration: 1,
 			ease: 'power4.out',
 		},
@@ -464,7 +464,7 @@ homeSolutionFirstTl
 	);
 
 ScrollTrigger.create({
-	trigger: solutionFirstLeft,
+	trigger: solutionFirstRight,
 	start: 'top 75%',
 	onEnter: () => {
 		if (!homeSolutionFirstTl.isActive()) {
@@ -476,7 +476,7 @@ ScrollTrigger.create({
 solutionLeft.forEach((div) => {
 	const tl = gsap.timeline({ paused: true });
 	tl.from(div, {
-		xPercent: -25,
+		xPercent: isMobileHome ? -10 : -25,
 		duration: 1,
 		ease: 'power2.out',
 	});
@@ -497,7 +497,7 @@ solutionLeft.forEach((div) => {
 solutionRight.forEach((div) => {
 	const tl = gsap.timeline({ paused: true });
 	tl.from(div, {
-		xPercent: 25,
+		xPercent: isMobileHome ? 10 : 25,
 		duration: 1,
 		ease: 'power2.out',
 	});
@@ -573,7 +573,7 @@ ScrollTrigger.create({
 		});
 		gsap.from('[cd="ipad-slide"]', {
 			opacity: 0,
-			xPercent: 25,
+			xPercent: isMobileHome ? 10 : 25,
 			duration: 1,
 			ease: 'power4.out',
 			onComplete: () => {
@@ -584,7 +584,7 @@ ScrollTrigger.create({
 		});
 		gsap.from('[cd="ipad-text"]', {
 			opacity: 0,
-			yPercent: 25,
+			yPercent: isMobileHome ? 10 : 25,
 			duration: 1,
 			ease: 'power4.out',
 		});
@@ -606,7 +606,7 @@ ScrollTrigger.create({
 		});
 		gsap.from('[cd="benefit-img"]', {
 			opacity: 0,
-			yPercent: 15,
+			yPercent: isMobileHome ? 5 : 15,
 			duration: 1,
 			ease: 'power4.out',
 			onComplete: () => {
@@ -645,7 +645,7 @@ const featureTl = gsap.timeline({ paused: true });
 featureTl
 	.from(featureItems, {
 		autoAlpha: 0,
-		xPercent: 10,
+		xPercent: isMobileHome ? 5 : 10,
 		duration: 1,
 		ease: 'power2.out',
 		stagger: {
@@ -656,7 +656,7 @@ featureTl
 		'[cd="feature-img"]',
 		{
 			autoAlpha: 0,
-			yPercent: 20,
+			yPercent: isMobileHome ? 10 : 20,
 			duration: 1,
 			ease: 'power2.out',
 		},
