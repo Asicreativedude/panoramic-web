@@ -4,7 +4,7 @@ const config: UserConfig = {
 	build: {
 		rollupOptions: {
 			input: {
-				general: 'src/general.ts',
+				// general: 'src/general.ts',
 				home: 'src/home.ts',
 				bePartner: 'src/bePartner.ts',
 				findAPartner: 'src/findAPartner.ts',

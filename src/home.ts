@@ -355,6 +355,8 @@ addClassWhenInView('.js-globe', 'in-view');
 //animated titles
 const splitTitlesHome = document.querySelectorAll('[cd="animated-title"]')!;
 const homeHeroContent = document.querySelectorAll('[cd="home-hero-c"]')!;
+const homeTitles = document.querySelectorAll('[cd="animated-line"]')!;
+
 const heroHomeTl = gsap.timeline({ paused: true });
 heroHomeTl.from(homeHeroContent, {
 	autoAlpha: 0,
@@ -395,4 +397,278 @@ splitTitlesHome.forEach((title) => {
 			}
 		},
 	});
+});
+
+homeTitles.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, {
+		duration: 1,
+		yPercent: 100,
+		ease: 'power4.out',
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+});
+const solutionFirstLeft = document.querySelector(
+	'[cd="home-solution-left-first"]'
+)! as HTMLDivElement;
+const solutionFirstRight = document.querySelector(
+	'[cd="home-solution-right-first"]'
+)! as HTMLDivElement;
+const solutionFirstVid = document.querySelector(
+	'[cd="home-solution-first-vid"]'
+)! as HTMLDivElement;
+const solutionLeft = document.querySelectorAll('[cd="home-solution-left"]')!;
+const solutionRight = document.querySelectorAll('[cd="home-solution-right"]')!;
+const solutionsCreatives = document.querySelectorAll(
+	'[cd="home-solution-scale-in"]'
+)!;
+const homeSolutionFirstTl = gsap.timeline({ paused: true });
+
+homeSolutionFirstTl
+	.from(solutionFirstLeft, {
+		autoAlpha: 0,
+		xPercent: -25,
+		duration: 1,
+		ease: 'power4.out',
+	})
+	.from(
+		solutionFirstRight,
+		{
+			autoAlpha: 0,
+			xPercent: 10,
+			duration: 1,
+			ease: 'power4.out',
+		},
+		'<'
+	)
+	.from(
+		solutionFirstVid,
+		{
+			autoAlpha: 0,
+			scale: 1.3,
+			duration: 1,
+			ease: 'power4.out',
+		},
+		'<'
+	);
+
+ScrollTrigger.create({
+	trigger: solutionFirstLeft,
+	start: 'top 75%',
+	onEnter: () => {
+		if (!homeSolutionFirstTl.isActive()) {
+			homeSolutionFirstTl.play();
+		}
+	},
+});
+
+solutionLeft.forEach((div) => {
+	const tl = gsap.timeline({ paused: true });
+	tl.from(div, {
+		xPercent: -25,
+		duration: 1,
+		ease: 'power2.out',
+	});
+
+	ScrollTrigger.create({
+		trigger: div,
+		start: div.classList.contains('home-solution-creative-c')
+			? 'top 85%'
+			: 'top 95%',
+		onEnter: () => {
+			if (!tl.isActive()) {
+				tl.play();
+			}
+		},
+	});
+});
+
+solutionRight.forEach((div) => {
+	const tl = gsap.timeline({ paused: true });
+	tl.from(div, {
+		xPercent: 25,
+		duration: 1,
+		ease: 'power2.out',
+	});
+	ScrollTrigger.create({
+		trigger: div,
+		start: div.classList.contains('home-solution-creative-c')
+			? 'top 85%'
+			: 'top 95%',
+		onEnter: () => {
+			if (!tl.isActive()) {
+				tl.play();
+			}
+		},
+	});
+});
+
+solutionsCreatives.forEach((div) => {
+	const tl = gsap.timeline({ paused: true });
+	tl.from(div, {
+		scale: 1.3,
+		duration: 1,
+		ease: 'power2.out',
+	});
+	ScrollTrigger.create({
+		trigger: div,
+		start: 'top 85%',
+		onEnter: () => {
+			if (!tl.isActive()) {
+				tl.play();
+			}
+		},
+	});
+});
+
+ScrollTrigger.create({
+	trigger: '[cd="home-partner-img"]',
+	start: 'top 75%',
+	onEnter: () => {
+		if (
+			(
+				document.querySelector('[cd="home-partner-img"]') as HTMLDivElement
+			).classList.contains('in-view')
+		)
+			return;
+		gsap.to('[cd="home-partner-img"]', {
+			scale: 1.2,
+			duration: 1,
+			ease: 'power2.out',
+			onComplete: () => {
+				(
+					document.querySelector('[cd="home-partner-img"]') as HTMLDivElement
+				).classList.add('in-view');
+			},
+		});
+	},
+});
+
+ScrollTrigger.create({
+	trigger: '.benefit-one-place-c',
+	start: 'top 75%',
+	onEnter: () => {
+		if (
+			(
+				document.querySelector('.benefit-one-place-c') as HTMLDivElement
+			).classList.contains('in-view')
+		)
+			return;
+		gsap.set('[cd="ipad-slide"]', {
+			opacity: 1,
+		});
+		gsap.set('[cd="ipad-text"]', {
+			opacity: 1,
+		});
+		gsap.from('[cd="ipad-slide"]', {
+			opacity: 0,
+			xPercent: 25,
+			duration: 1,
+			ease: 'power4.out',
+			onComplete: () => {
+				(
+					document.querySelector('.benefit-one-place-c') as HTMLDivElement
+				).classList.add('in-view');
+			},
+		});
+		gsap.from('[cd="ipad-text"]', {
+			opacity: 0,
+			yPercent: 25,
+			duration: 1,
+			ease: 'power4.out',
+		});
+	},
+});
+
+ScrollTrigger.create({
+	trigger: '.benefits-flex',
+	start: 'top 75%',
+	onEnter: () => {
+		if (
+			(
+				document.querySelector('.benefits-flex') as HTMLDivElement
+			).classList.contains('in-view')
+		)
+			return;
+		gsap.set('[cd="benefit-img"]', {
+			opacity: 1,
+		});
+		gsap.from('[cd="benefit-img"]', {
+			opacity: 0,
+			yPercent: 15,
+			duration: 1,
+			ease: 'power4.out',
+			onComplete: () => {
+				(
+					document.querySelector('.benefits-flex') as HTMLDivElement
+				).classList.add('in-view');
+			},
+		});
+	},
+});
+
+const scaleIn = document.querySelectorAll('[cd="scale-in"]')!;
+
+scaleIn.forEach((div) => {
+	const tl = gsap.timeline({ paused: true });
+	tl.to(div, {
+		scale: 1,
+		duration: 1,
+		ease: 'power2.out',
+	});
+	ScrollTrigger.create({
+		trigger: div,
+		start: 'top 75%',
+		onEnter: () => {
+			if (!tl.isActive()) {
+				tl.play();
+			}
+		},
+	});
+});
+
+const featureItems = document.querySelectorAll('[cd="feature-item"]')!;
+
+const featureTl = gsap.timeline({ paused: true });
+
+featureTl
+	.from(featureItems, {
+		autoAlpha: 0,
+		xPercent: 10,
+		duration: 1,
+		ease: 'power2.out',
+		stagger: {
+			amount: 0.3,
+		},
+	})
+	.from(
+		'[cd="feature-img"]',
+		{
+			autoAlpha: 0,
+			yPercent: 20,
+			duration: 1,
+			ease: 'power2.out',
+		},
+		'<'
+	);
+
+ScrollTrigger.create({
+	trigger: '.features-s',
+	start: 'top 75%',
+	onEnter: () => {
+		if (!featureTl.isActive()) {
+			featureTl.play();
+		}
+	},
 });
