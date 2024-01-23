@@ -234,3 +234,19 @@ solutionSmallTitles.forEach((title) => {
 		},
 	});
 });
+
+//clip close on click
+
+const clipContainer = document.querySelector('.sensor-installed-c')!;
+const openImage = clipContainer.querySelector('.clip-sensor-image.open-clip')!;
+const closeImage = clipContainer.querySelector(
+	'.clip-sensor-image.close-clip'
+)!;
+const openText = clipContainer.querySelector('.clip-sensor-text-base')!;
+const closeText = clipContainer.querySelector('.clip-sensor-text')!;
+clipContainer.addEventListener('click', () => {
+	openImage.classList.toggle('active');
+	closeImage.classList.toggle('active');
+	openText.classList.toggle('active');
+	closeText.classList.toggle('active');
+});
