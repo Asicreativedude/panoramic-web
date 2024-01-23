@@ -12,7 +12,7 @@ const solutionSwiper = new Swiper('.data-integration-slider-c', {
 	slideActiveClass: 'isActive',
 	loop: true,
 	autoplay: {
-		delay: 4000,
+		delay: 7000,
 	},
 	allowTouchMove: false,
 });
@@ -43,7 +43,7 @@ containers.forEach((container, index) => {
 			setTimeout(() => {
 				tl.restart();
 				tl.pause();
-			}, 2500);
+			}, 4800);
 		},
 	});
 	if (index !== 0 && !firstload) {
@@ -57,7 +57,7 @@ containers.forEach((container, index) => {
 			{
 				drawSVG: 0,
 				ease: 'power2.out',
-				duration: duration * (segment.getTotalLength() / distance),
+				duration: duration,
 			},
 			0.5
 		);
