@@ -10,6 +10,7 @@ const config: UserConfig = {
 				findAPartner: 'src/findAPartner.ts',
 				partnerPage: 'src/partnerPage.ts',
 				solution: 'src/solution.ts',
+				contactUs: 'src/contactUs.ts',
 				// Add more entry points as needed
 			},
 			output: {
