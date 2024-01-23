@@ -356,15 +356,28 @@ addClassWhenInView('.js-globe', 'in-view');
 const splitTitlesHome = document.querySelectorAll('[cd="animated-title"]')!;
 const homeHeroContent = document.querySelectorAll('[cd="home-hero-c"]')!;
 const homeTitles = document.querySelectorAll('[cd="animated-line"]')!;
-
+const homeHeroImg = document.querySelectorAll('[cd="home-hero-img"]')!;
 const heroHomeTl = gsap.timeline({ paused: true });
-heroHomeTl.from(homeHeroContent, {
+
+heroHomeTl.from(homeHeroImg, {
 	autoAlpha: 0,
-	opacity: 0,
-	x: isMobileHome ? 15 : 50,
+	yPercent: 50,
+	stagger: 0.3,
 	duration: 1,
 	ease: 'power1.out',
 });
+
+heroHomeTl.from(
+	homeHeroContent,
+	{
+		autoAlpha: 0,
+		opacity: 0,
+		x: isMobileHome ? 15 : 50,
+		duration: 1,
+		ease: 'power1.out',
+	},
+	0.5
+);
 splitTitlesHome.forEach((title) => {
 	const split = new SplitText(title, {
 		type: 'lines, words',
