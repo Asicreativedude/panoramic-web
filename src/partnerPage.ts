@@ -247,3 +247,6 @@ countriesSelect.innerHTML = `
             <option value="Zambia">Zambia</option>
             <option value="Zimbabwe">Zimbabwe</option>
             `;
+
+(document.getElementById('hidden-field') as HTMLInputElement).value =
+	document.getElementById('hidden-field-text')!.innerText;
