@@ -473,4 +473,71 @@ webflowBe.push(function () {
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
 				`;
+
+	//animated titles
+	const splitTitlesBe = document.querySelectorAll('[cd="animated-title"]');
+	const beSmallTitles = document.querySelectorAll('[cd="animated-line"]');
+	const beHeroImg = document.querySelector('[cd="bePartner-hero-img"]')!;
+
+	const beHeroTl = gsap.timeline({ paused: true });
+	beHeroTl.from(beHeroImg, {
+		autoAlpha: 0,
+		yPercent: 100,
+		duration: 1,
+		ease: 'power4.out',
+	});
+	splitTitlesBe.forEach((title) => {
+		const split = new SplitText(title, {
+			type: 'lines, words',
+			wordsClass: 'cd-word',
+			linesClass: 'cd-line',
+		});
+
+		gsap.from(split.words, 1.8, {
+			y: 140,
+			ease: 'power4.out',
+			skewY: 17,
+			stagger: {
+				amount: 0.3,
+			},
+			onStart: () => {
+				gsap.set(title, { opacity: 1 });
+			},
+			scrollTrigger: {
+				trigger: title,
+				start: 'top 75%',
+			},
+		});
+
+		ScrollTrigger.create({
+			trigger: title,
+			start: 'top 75%',
+			onEnter: () => {
+				if (!beHeroTl.isActive()) {
+					beHeroTl.play();
+				}
+			},
+		});
+	});
+
+	beSmallTitles.forEach((title) => {
+		const split = new SplitText(title, {
+			type: 'lines, words',
+			wordsClass: 'cd-word',
+			linesClass: 'cd-line',
+		});
+
+		gsap.from(split.words, {
+			duration: 1,
+			yPercent: 100,
+			ease: 'power4.out',
+			onStart: () => {
+				gsap.set(title, { opacity: 1 });
+			},
+			scrollTrigger: {
+				trigger: title,
+				start: 'top 75%',
+			},
+		});
+	});
 });

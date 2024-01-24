@@ -105,3 +105,52 @@ window.addEventListener('resize', () => {
 		setGsapScrollPartner();
 	}
 });
+
+//animated titles
+const splitTitlesFind = document.querySelectorAll('[cd="animated-title"]');
+const findSmallTitles = document.querySelectorAll('[cd="animated-line"]');
+
+splitTitlesFind.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, 1.8, {
+		y: 140,
+		ease: 'power4.out',
+		skewY: 17,
+		stagger: {
+			amount: 0.3,
+		},
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+});
+
+findSmallTitles.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, {
+		duration: 1,
+		yPercent: 100,
+		ease: 'power4.out',
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+});
