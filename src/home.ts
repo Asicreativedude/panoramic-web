@@ -685,3 +685,60 @@ ScrollTrigger.create({
 		}
 	},
 });
+
+//loading animation
+const letters = document.querySelectorAll('.logo-letters')!;
+const mainLetter = document.querySelector('.logo-main-letter')!;
+const lettersWrapepr = document.querySelector('.logo-letters-c')!;
+const loader = document.querySelector('.loading-s')!;
+const logoTl = gsap.timeline();
+logoTl
+	.from(mainLetter, {
+		transformOrigin: 'center center',
+		autoAlpha: 0,
+		opacity: 0,
+		scale: 0,
+		duration: 1,
+		ease: 'power2.out',
+	})
+	.to(mainLetter, {
+		x: 0,
+		duration: 1,
+		ease: 'power2.out',
+		delay: 0.3,
+	})
+	.to(
+		letters,
+		{
+			x: 0,
+			duration: 1,
+			ease: 'power2.out',
+		},
+		'<+0.1'
+	)
+	.to(
+		lettersWrapepr,
+		{
+			x: 0,
+			duration: 1,
+			ease: 'power2.out',
+		},
+		'<'
+	)
+	.to(
+		letters,
+		{
+			opacity: 1,
+			duration: 1,
+			ease: 'power2.out',
+		},
+		'<+0.1'
+	)
+	.to(loader, {
+		opacity: 0,
+		duration: 0.5,
+		ease: 'power2.out',
+		onComplete: () => {
+			loader.classList.add('hide');
+		},
+	});
