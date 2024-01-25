@@ -505,7 +505,7 @@ webflowBe.push(function () {
 			},
 			scrollTrigger: {
 				trigger: title,
-				start: 'top 75%',
+				start: 'top 85%',
 			},
 		});
 
@@ -536,8 +536,50 @@ webflowBe.push(function () {
 			},
 			scrollTrigger: {
 				trigger: title,
-				start: 'top 75%',
+				start: 'top 85%',
 			},
 		});
+	});
+
+	const fadesBe = document.querySelectorAll('[cd="fade-up"]');
+	fadesBe.forEach((fade) => {
+		gsap.from(fade, {
+			duration: 1,
+			yPercent: 30,
+			opacity: 0,
+			ease: 'power4.out',
+			scrollTrigger: {
+				trigger: fade,
+				start: 'top 85%',
+			},
+		});
+	});
+
+	const featureItemsBe = document.querySelectorAll('[cd="feature-item"]')!;
+
+	const featureBeTl = gsap.timeline({ paused: true });
+	let isBeHome = window.innerWidth < 992;
+	featureBeTl.from(featureItemsBe, {
+		autoAlpha: 0,
+		xPercent: isBeHome ? 5 : 10,
+		duration: 1,
+		ease: 'power2.out',
+		stagger: {
+			amount: 0.3,
+		},
+	});
+
+	ScrollTrigger.create({
+		trigger: '.program-highlight-s',
+		start: 'top 75%',
+		onEnter: () => {
+			if (!featureBeTl.isActive()) {
+				featureBeTl.play();
+			}
+		},
+	});
+
+	window.addEventListener('resize', () => {
+		isBeHome = window.innerWidth < 992;
 	});
 });
