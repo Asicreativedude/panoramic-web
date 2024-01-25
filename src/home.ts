@@ -359,79 +359,26 @@ const homeTitles = document.querySelectorAll('[cd="animated-line"]')!;
 const homeHeroImg = document.querySelectorAll('[cd="home-hero-img"]')!;
 const heroHomeTl = gsap.timeline({ paused: true });
 
-heroHomeTl.from(homeHeroImg, {
-	autoAlpha: 0,
-	yPercent: 50,
-	stagger: 0.3,
-	duration: 1,
-	ease: 'power1.out',
-});
-
-heroHomeTl.from(
-	homeHeroContent,
-	{
+heroHomeTl
+	.from(homeHeroImg, {
 		autoAlpha: 0,
-		opacity: 0,
-		x: isMobileHome ? 15 : 50,
+		yPercent: 50,
+		stagger: 0.3,
 		duration: 1,
 		ease: 'power1.out',
-	},
-	0.5
-);
-splitTitlesHome.forEach((title) => {
-	const split = new SplitText(title, {
-		type: 'lines, words',
-		wordsClass: 'cd-word',
-		linesClass: 'cd-line',
-	});
+	})
+	.from(
+		homeHeroContent,
+		{
+			autoAlpha: 0,
+			opacity: 0,
+			x: isMobileHome ? 15 : 50,
+			duration: 1,
+			ease: 'power1.out',
+		},
+		0.5
+	);
 
-	gsap.from(split.words, 1.8, {
-		y: 140,
-		ease: 'power4.out',
-		skewY: 17,
-		stagger: {
-			amount: 0.3,
-		},
-		onStart: () => {
-			gsap.set(title, { opacity: 1 });
-		},
-		scrollTrigger: {
-			trigger: title,
-			start: 'top 75%',
-		},
-	});
-
-	ScrollTrigger.create({
-		trigger: title,
-		start: 'top 75%',
-		onEnter: () => {
-			if (!heroHomeTl.isActive()) {
-				heroHomeTl.play();
-			}
-		},
-	});
-});
-
-homeTitles.forEach((title) => {
-	const split = new SplitText(title, {
-		type: 'lines, words',
-		wordsClass: 'cd-word',
-		linesClass: 'cd-line',
-	});
-
-	gsap.from(split.words, {
-		duration: 1,
-		yPercent: 100,
-		ease: 'power4.out',
-		onStart: () => {
-			gsap.set(title, { opacity: 1 });
-		},
-		scrollTrigger: {
-			trigger: title,
-			start: 'top 75%',
-		},
-	});
-});
 const solutionFirstLeft = document.querySelector(
 	'[cd="home-solution-left-first"]'
 )! as HTMLDivElement;
@@ -740,5 +687,61 @@ logoTl
 		ease: 'power2.out',
 		onComplete: () => {
 			loader.classList.add('hide');
+			splitTitlesHome.forEach((title) => {
+				const split = new SplitText(title, {
+					type: 'lines, words',
+					wordsClass: 'cd-word',
+					linesClass: 'cd-line',
+				});
+
+				gsap.from(split.words, 1.8, {
+					y: 140,
+					ease: 'power4.out',
+					skewY: 17,
+					stagger: {
+						amount: 0.3,
+					},
+					onStart: () => {
+						gsap.set(title, { opacity: 1 });
+					},
+					scrollTrigger: {
+						trigger: title,
+						start: 'top 75%',
+					},
+				});
+
+				ScrollTrigger.create({
+					trigger: title,
+					start: 'top 75%',
+					onEnter: () => {
+						if (!heroHomeTl.isActive()) {
+							heroHomeTl.play();
+						}
+					},
+				});
+			});
+
+			homeTitles.forEach((title) => {
+				const split = new SplitText(title, {
+					type: 'lines, words',
+					wordsClass: 'cd-word',
+					linesClass: 'cd-line',
+				});
+
+				gsap.from(split.words, {
+					duration: 1,
+					yPercent: 100,
+					ease: 'power4.out',
+					onStart: () => {
+						gsap.set(title, { opacity: 1 });
+					},
+					scrollTrigger: {
+						trigger: title,
+						start: 'top 75%',
+					},
+				});
+			});
+			document.body.classList.remove('overflow-hidden');
+			console.log(document.body.classList);
 		},
 	});
