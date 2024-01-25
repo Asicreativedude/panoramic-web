@@ -742,6 +742,5 @@ logoTl
 				});
 			});
 			document.body.classList.remove('overflow-hidden');
-			console.log(document.body.classList);
 		},
 	});
