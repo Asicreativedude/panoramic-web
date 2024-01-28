@@ -585,6 +585,10 @@
 	.container.video-popup-c {
 		max-width: 100%;
 	}
+	.video-popup-close {
+		top: -6rem;
+		right: 2rem;
+	}
 	.excellence-s {
 		padding: 9rem 0 12rem;
 	}

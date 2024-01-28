@@ -25,6 +25,8 @@ const players = Array.from(document.querySelectorAll('.js-player')).map(
 			controls,
 		})
 );
+//@ts-ignore
+const heroPlayer = new Plyr('.js-player-hero', {});
 
 const mobilePlayBtn = document.querySelector('.cd-video-btn.mobile-only')!;
 mobilePlayBtn.addEventListener('click', () => {
@@ -58,6 +60,7 @@ mobilePlayBtn.addEventListener('click', () => {
 const allVideos = document.querySelectorAll('.plyr--video');
 
 allVideos.forEach((player) => {
+	if (player.parentElement?.classList.contains('home-main-vid-embed')) return;
 	player.addEventListener('click', () => {
 		(player.querySelector('.cd-video-btn-text')! as HTMLSpanElement)
 			.textContent === 'Play Video'
@@ -744,3 +747,19 @@ logoTl
 			document.body.classList.remove('overflow-hidden');
 		},
 	});
+
+// show video popup
+const showVideoBtn = document.getElementById('show-vid')!;
+const videoPopup = document.querySelector('.video-popup-s')!;
+const videoPopupClose = document.querySelector('.video-popup-close')!;
+const videoPopupVideo = document.getElementById('hero-vid') as HTMLVideoElement;
+
+showVideoBtn.addEventListener('click', () => {
+	videoPopup.classList.remove('hide');
+	videoPopupVideo.play();
+});
+
+videoPopupClose.addEventListener('click', () => {
+	videoPopup.classList.add('hide');
+	videoPopupVideo.pause();
+});
