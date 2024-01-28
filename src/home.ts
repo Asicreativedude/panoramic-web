@@ -307,7 +307,7 @@ function setExcellenceSwiper() {
 		},
 	});
 }
-let isMobileHome = window.innerWidth < 992;
+let isMobileHome = window.innerWidth < 1025;
 
 if (!isMobileHome) {
 	setGsapScroll();
@@ -318,7 +318,7 @@ if (!isMobileHome) {
 }
 
 window.addEventListener('resize', () => {
-	isMobileHome = window.innerWidth < 992;
+	isMobileHome = window.innerWidth < 1025;
 	if (!isMobileHome) {
 		setGsapScroll();
 	} else {

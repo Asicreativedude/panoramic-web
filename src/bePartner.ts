@@ -173,13 +173,13 @@ webflowBe.push(function () {
 		);
 	}
 
-	let isMobileBePartner = window.innerWidth < 992;
+	let isMobileBePartner = window.innerWidth < 1025;
 	if (isMobileBePartner) {
 		setPagesSwipers();
 	}
 
 	window.addEventListener('resize', () => {
-		isMobileBePartner = window.innerWidth < 992;
+		isMobileBePartner = window.innerWidth < 1025;
 		if (isMobileBePartner) {
 			setPagesSwipers();
 		}

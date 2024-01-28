@@ -94,13 +94,13 @@ function setGsapScrollPartner() {
 	});
 }
 
-let isMobileFindPartner = window.innerWidth < 992;
+let isMobileFindPartner = window.innerWidth < 1025;
 if (!isMobileFindPartner) {
 	setGsapScrollPartner();
 }
 
 window.addEventListener('resize', () => {
-	isMobileFindPartner = window.innerWidth < 992;
+	isMobileFindPartner = window.innerWidth < 1025;
 	if (!isMobileFindPartner) {
 		setGsapScrollPartner();
 	}

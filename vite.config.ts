@@ -11,6 +11,7 @@ const config: UserConfig = {
 				partnerPage: 'src/partnerPage.ts',
 				solution: 'src/solution.ts',
 				contactUs: 'src/contactUs.ts',
+				panoramicStyle: 'src/panoramicStyle.css',
 				// Add more entry points as needed
 			},
 			output: {
