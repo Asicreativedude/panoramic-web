@@ -26,7 +26,9 @@ const players = Array.from(document.querySelectorAll('.js-player')).map(
 		})
 );
 //@ts-ignore
-const heroPlayer = new Plyr('.js-player-hero', {});
+const heroPlayer = new Plyr('.js-player-hero', {
+	fullscreen: { iosNative: true },
+});
 
 const mobilePlayBtn = document.querySelector('.cd-video-btn.mobile-only')!;
 mobilePlayBtn.addEventListener('click', () => {
