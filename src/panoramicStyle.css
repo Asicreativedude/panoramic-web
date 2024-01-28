@@ -582,7 +582,9 @@
 	.fs-h3.partner-page-title {
 		font-size: 3.2rem;
 	}
-
+	.container.video-popup-c {
+		max-width: 100%;
+	}
 	.excellence-s {
 		padding: 9rem 0 12rem;
 	}
