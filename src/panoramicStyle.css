@@ -1133,6 +1133,40 @@
 		left: 0%;
 		right: 0%;
 	}
+
+	.schedule-demo-title-c {
+		max-width: 100%;
+		margin-bottom: 4.2rem;
+	}
+
+	.schedule-demo-flex {
+		grid-column-gap: 0rem;
+		grid-row-gap: 4.2rem;
+		flex-direction: column-reverse;
+	}
+
+	.demo-highlights-c {
+		padding-left: 3rem;
+		padding-right: 3rem;
+	}
+
+	.demo-highlights-title-c {
+		max-width: 100%;
+	}
+
+	.schedule-demo-form-c {
+		box-shadow: none;
+		border-style: none;
+		border-width: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.schedule-demo-s {
+		padding-top: 10rem;
+		padding-left: 0;
+		padding-right: 0;
+	}
 	#w-node-c25b2107-129d-0675-05df-249a890999c4-df58299e {
 		grid-area: 1/1/2/2;
 	}
