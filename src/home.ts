@@ -750,11 +750,11 @@ const videoPopupVideo = document.getElementById('hero-vid') as HTMLVideoElement;
 showVideoBtn.addEventListener('click', () => {
 	videoPopup.classList.remove('hide');
 	videoPopupVideo.play();
-	(document.getElementById('hero-home-vid')! as HTMLVideoElement).pause();
+	(document.getElementById('home-hero-vid')! as HTMLVideoElement).pause();
 });
 
 videoPopupClose.addEventListener('click', () => {
 	videoPopup.classList.add('hide');
 	videoPopupVideo.pause();
-	(document.getElementById('hero-home-vid')! as HTMLVideoElement).play();
+	(document.getElementById('home-hero-vid')! as HTMLVideoElement).play();
 });
