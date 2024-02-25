@@ -361,28 +361,19 @@ addClassWhenInView('.js-globe', 'in-view');
 const splitTitlesHome = document.querySelectorAll('[cd="animated-title"]')!;
 const homeHeroContent = document.querySelectorAll('[cd="home-hero-c"]')!;
 const homeTitles = document.querySelectorAll('[cd="animated-line"]')!;
-const homeHeroImg = document.querySelectorAll('[cd="home-hero-img"]')!;
 const heroHomeTl = gsap.timeline({ paused: true });
 
-heroHomeTl
-	.from(homeHeroImg, {
+heroHomeTl.from(
+	homeHeroContent,
+	{
 		autoAlpha: 0,
-		yPercent: 50,
-		stagger: 0.3,
+		opacity: 0,
+		x: isMobileHome ? 15 : 50,
 		duration: 1,
 		ease: 'power1.out',
-	})
-	.from(
-		homeHeroContent,
-		{
-			autoAlpha: 0,
-			opacity: 0,
-			x: isMobileHome ? 15 : 50,
-			duration: 1,
-			ease: 'power1.out',
-		},
-		0.5
-	);
+	},
+	0.5
+);
 
 const solutionFirstLeft = document.querySelector(
 	'[cd="home-solution-left-first"]'
@@ -759,9 +750,11 @@ const videoPopupVideo = document.getElementById('hero-vid') as HTMLVideoElement;
 showVideoBtn.addEventListener('click', () => {
 	videoPopup.classList.remove('hide');
 	videoPopupVideo.play();
+	(document.getElementById('hero-home-vid')! as HTMLVideoElement).pause();
 });
 
 videoPopupClose.addEventListener('click', () => {
 	videoPopup.classList.add('hide');
 	videoPopupVideo.pause();
+	(document.getElementById('hero-home-vid')! as HTMLVideoElement).play();
 });
