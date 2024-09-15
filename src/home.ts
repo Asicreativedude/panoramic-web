@@ -488,88 +488,36 @@ solutionsCreatives.forEach((div) => {
 	});
 });
 
+const benefitsImg = gsap.utils.toArray(
+	'[cd="benefit-img"]'
+) as HTMLImageElement[];
 ScrollTrigger.create({
-	trigger: '[cd="home-partner-img"]',
+	trigger: '.home-power-solution-cards',
 	start: 'top 75%',
 	onEnter: () => {
 		if (
 			(
-				document.querySelector('[cd="home-partner-img"]') as HTMLDivElement
+				document.querySelector('.home-power-solution-cards') as HTMLDivElement
 			).classList.contains('in-view')
 		)
 			return;
-		gsap.to('[cd="home-partner-img"]', {
-			scale: 1.2,
-			duration: 1,
-			ease: 'power2.out',
-			onComplete: () => {
-				(
-					document.querySelector('[cd="home-partner-img"]') as HTMLDivElement
-				).classList.add('in-view');
-			},
-		});
-	},
-});
-
-ScrollTrigger.create({
-	trigger: '.benefit-one-place-c',
-	start: 'top 75%',
-	onEnter: () => {
-		if (
-			(
-				document.querySelector('.benefit-one-place-c') as HTMLDivElement
-			).classList.contains('in-view')
-		)
-			return;
-		gsap.set('[cd="ipad-slide"]', {
-			opacity: 1,
-		});
-		gsap.set('[cd="ipad-text"]', {
-			opacity: 1,
-		});
-		gsap.from('[cd="ipad-slide"]', {
-			opacity: 0,
-			xPercent: isMobileHome ? 10 : 25,
-			duration: 1,
-			ease: 'power4.out',
-			onComplete: () => {
-				(
-					document.querySelector('.benefit-one-place-c') as HTMLDivElement
-				).classList.add('in-view');
-			},
-		});
-		gsap.from('[cd="ipad-text"]', {
-			opacity: 0,
-			yPercent: isMobileHome ? 10 : 25,
-			duration: 1,
-			ease: 'power4.out',
-		});
-	},
-});
-
-ScrollTrigger.create({
-	trigger: '.benefits-flex',
-	start: 'top 75%',
-	onEnter: () => {
-		if (
-			(
-				document.querySelector('.benefits-flex') as HTMLDivElement
-			).classList.contains('in-view')
-		)
-			return;
-		gsap.set('[cd="benefit-img"]', {
-			opacity: 1,
-		});
-		gsap.from('[cd="benefit-img"]', {
-			opacity: 0,
-			yPercent: isMobileHome ? 5 : 15,
-			duration: 1,
-			ease: 'power4.out',
-			onComplete: () => {
-				(
-					document.querySelector('.benefits-flex') as HTMLDivElement
-				).classList.add('in-view');
-			},
+		benefitsImg.forEach((img) => {
+			gsap.set(img, {
+				opacity: 1,
+			});
+			gsap.from(img, {
+				opacity: 0,
+				yPercent: isMobileHome ? 5 : 15,
+				duration: 1,
+				ease: 'power4.out',
+				onComplete: () => {
+					(
+						document.querySelector(
+							'.home-power-solution-cards'
+						) as HTMLDivElement
+					).classList.add('in-view');
+				},
+			});
 		});
 	},
 });
@@ -594,152 +542,116 @@ scaleIn.forEach((div) => {
 	});
 });
 
-const featureItems = document.querySelectorAll('[cd="feature-item"]')!;
+// //loading animation
+// const letters = document.querySelectorAll('.logo-letters')!;
+// const mainLetter = document.querySelector('.logo-main-letter')!;
+// const lettersWrapepr = document.querySelector('.logo-letters-c')!;
+// const loader = document.querySelector('.loading-s')!;
+// const logoTl = gsap.timeline();
+// logoTl
+// 	.from(mainLetter, {
+// 		transformOrigin: 'center center',
+// 		autoAlpha: 0,
+// 		opacity: 0,
+// 		scale: 0,
+// 		duration: 1,
+// 		ease: 'power2.out',
+// 	})
+// 	.to(mainLetter, {
+// 		x: 0,
+// 		duration: 1,
+// 		ease: 'power2.out',
+// 		delay: 0.3,
+// 	})
+// 	.to(
+// 		letters,
+// 		{
+// 			x: 0,
+// 			duration: 1,
+// 			ease: 'power2.out',
+// 		},
+// 		'<+0.1'
+// 	)
+// 	.to(
+// 		lettersWrapepr,
+// 		{
+// 			x: 0,
+// 			duration: 1,
+// 			ease: 'power2.out',
+// 		},
+// 		'<'
+// 	)
+// 	.to(
+// 		letters,
+// 		{
+// 			opacity: 1,
+// 			duration: 1,
+// 			ease: 'power2.out',
+// 		},
+// 		'<+0.1'
+// 	)
+// 	.to(loader, {
+// 		opacity: 0,
+// 		duration: 0.5,
+// 		ease: 'power2.out',
+// 		onComplete: () => {
+// 			loader.classList.add('hide');
+splitTitlesHome.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
 
-const featureTl = gsap.timeline({ paused: true });
-
-featureTl
-	.from(featureItems, {
-		autoAlpha: 0,
-		xPercent: isMobileHome ? 5 : 10,
-		duration: 1,
-		ease: 'power2.out',
+	gsap.from(split.words, 1.8, {
+		y: 140,
+		ease: 'power4.out',
+		skewY: 17,
 		stagger: {
 			amount: 0.3,
 		},
-	})
-	.from(
-		'[cd="feature-img"]',
-		{
-			autoAlpha: 0,
-			yPercent: isMobileHome ? 10 : 20,
-			duration: 1,
-			ease: 'power2.out',
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
 		},
-		'<'
-	);
-
-ScrollTrigger.create({
-	trigger: '.features-s',
-	start: 'top 75%',
-	onEnter: () => {
-		if (!featureTl.isActive()) {
-			featureTl.play();
-		}
-	},
-});
-
-//loading animation
-const letters = document.querySelectorAll('.logo-letters')!;
-const mainLetter = document.querySelector('.logo-main-letter')!;
-const lettersWrapepr = document.querySelector('.logo-letters-c')!;
-const loader = document.querySelector('.loading-s')!;
-const logoTl = gsap.timeline();
-logoTl
-	.from(mainLetter, {
-		transformOrigin: 'center center',
-		autoAlpha: 0,
-		opacity: 0,
-		scale: 0,
-		duration: 1,
-		ease: 'power2.out',
-	})
-	.to(mainLetter, {
-		x: 0,
-		duration: 1,
-		ease: 'power2.out',
-		delay: 0.3,
-	})
-	.to(
-		letters,
-		{
-			x: 0,
-			duration: 1,
-			ease: 'power2.out',
-		},
-		'<+0.1'
-	)
-	.to(
-		lettersWrapepr,
-		{
-			x: 0,
-			duration: 1,
-			ease: 'power2.out',
-		},
-		'<'
-	)
-	.to(
-		letters,
-		{
-			opacity: 1,
-			duration: 1,
-			ease: 'power2.out',
-		},
-		'<+0.1'
-	)
-	.to(loader, {
-		opacity: 0,
-		duration: 0.5,
-		ease: 'power2.out',
-		onComplete: () => {
-			loader.classList.add('hide');
-			splitTitlesHome.forEach((title) => {
-				const split = new SplitText(title, {
-					type: 'lines, words',
-					wordsClass: 'cd-word',
-					linesClass: 'cd-line',
-				});
-
-				gsap.from(split.words, 1.8, {
-					y: 140,
-					ease: 'power4.out',
-					skewY: 17,
-					stagger: {
-						amount: 0.3,
-					},
-					onStart: () => {
-						gsap.set(title, { opacity: 1 });
-					},
-					scrollTrigger: {
-						trigger: title,
-						start: 'top 75%',
-					},
-				});
-
-				ScrollTrigger.create({
-					trigger: title,
-					start: 'top 75%',
-					onEnter: () => {
-						if (!heroHomeTl.isActive()) {
-							heroHomeTl.play();
-						}
-					},
-				});
-			});
-
-			homeTitles.forEach((title) => {
-				const split = new SplitText(title, {
-					type: 'lines, words',
-					wordsClass: 'cd-word',
-					linesClass: 'cd-line',
-				});
-
-				gsap.from(split.words, {
-					duration: 1,
-					yPercent: 100,
-					ease: 'power4.out',
-					onStart: () => {
-						gsap.set(title, { opacity: 1 });
-					},
-					scrollTrigger: {
-						trigger: title,
-						start: 'top 75%',
-					},
-				});
-			});
-			document.body.classList.remove('overflow-hidden');
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
 		},
 	});
+
+	ScrollTrigger.create({
+		trigger: title,
+		start: 'top 75%',
+		onEnter: () => {
+			if (!heroHomeTl.isActive()) {
+				heroHomeTl.play();
+			}
+		},
+	});
+});
+
+homeTitles.forEach((title) => {
+	const split = new SplitText(title, {
+		type: 'lines, words',
+		wordsClass: 'cd-word',
+		linesClass: 'cd-line',
+	});
+
+	gsap.from(split.words, {
+		duration: 1,
+		yPercent: 100,
+		ease: 'power4.out',
+		onStart: () => {
+			gsap.set(title, { opacity: 1 });
+		},
+		scrollTrigger: {
+			trigger: title,
+			start: 'top 75%',
+		},
+	});
+});
+// 		},
+// 	});
 
 // show video popup
 const showVideoBtn = document.getElementById('show-vid')!;
@@ -748,13 +660,30 @@ const videoPopupClose = document.querySelector('.video-popup-close')!;
 const videoPopupVideo = document.getElementById('hero-vid') as HTMLVideoElement;
 
 showVideoBtn.addEventListener('click', () => {
-	videoPopup.classList.remove('hide');
+	videoPopup.classList.add('visible');
 	videoPopupVideo.play();
 	(document.getElementById('home-hero-vid')! as HTMLVideoElement).pause();
 });
 
 videoPopupClose.addEventListener('click', () => {
-	videoPopup.classList.add('hide');
+	videoPopup.classList.remove('visible');
 	videoPopupVideo.pause();
 	(document.getElementById('home-hero-vid')! as HTMLVideoElement).play();
+});
+
+//nav colors animations
+const nav = document.querySelector('.nav-s')!;
+const heroHeight = document.querySelector('.home-hero-s')!.clientHeight;
+window.addEventListener('scroll', () => {
+	if (window.scrollY > heroHeight) {
+		nav.querySelector('.nav-button')!.classList.remove('white');
+		nav.querySelector('.nav-logo-c')!.classList.remove('white');
+		nav.querySelector('.nav-logo-divider')!.classList.remove('white');
+		nav.querySelector('.nav-log-panoramic')!.classList.remove('white');
+	} else {
+		nav.querySelector('.nav-button')!.classList.add('white');
+		nav.querySelector('.nav-logo-c')!.classList.add('white');
+		nav.querySelector('.nav-logo-divider')!.classList.add('white');
+		nav.querySelector('.nav-log-panoramic')!.classList.add('white');
+	}
 });
