@@ -10,7 +10,7 @@
 	},
 	"devDependencies": {
 		"@types/gsap": "^3.0.0",
-		"typescript": "^5.2.2",
+		"typescript": "^5.6.2",
 		"vite": "^5.0.8"
 	},
 	"dependencies": {
