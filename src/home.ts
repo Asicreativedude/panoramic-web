@@ -32,12 +32,9 @@ const heroPlayer = new Plyr('.js-player-hero', {
 
 const mobilePlayBtn = document.querySelector('.cd-video-btn.mobile-only')!;
 mobilePlayBtn.addEventListener('click', () => {
-	testimonialSwiper.slides[testimonialSwiper.activeIndex].querySelector(
-		'video'
-	)!.paused
-		? (testimonialSwiper.slides[testimonialSwiper.activeIndex]
-				.querySelector('video')!
-				.play(),
+	console.log(players[testimonialSwiper.activeIndex + 1]);
+	players[testimonialSwiper.activeIndex + 1].paused
+		? (players[testimonialSwiper.activeIndex + 1].play(),
 		  (mobilePlayBtn.querySelector('.mobile-video-btn-text')!.textContent =
 				'Pause Video'),
 		  mobilePlayBtn
@@ -46,9 +43,7 @@ mobilePlayBtn.addEventListener('click', () => {
 		  mobilePlayBtn
 				.querySelector('.mobile-video-pause-icon')!
 				.classList.add('active'))
-		: (testimonialSwiper.slides[testimonialSwiper.activeIndex]
-				.querySelector('video')!
-				.pause(),
+		: (players[testimonialSwiper.activeIndex + 1].pause(),
 		  (mobilePlayBtn.querySelector('.mobile-video-btn-text')!.textContent =
 				'Play Video'),
 		  mobilePlayBtn
@@ -59,37 +54,69 @@ mobilePlayBtn.addEventListener('click', () => {
 				.classList.remove('active'));
 });
 
-const allVideos = document.querySelectorAll('.plyr--video');
-
-allVideos.forEach((player) => {
-	if (player.parentElement?.classList.contains('home-main-vid-embed')) return;
-	player.addEventListener('click', () => {
-		(player.querySelector('.cd-video-btn-text')! as HTMLSpanElement)
-			.textContent === 'Play Video'
-			? (((
-					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
-			  ).textContent = 'Pause Video'),
-			  (document.querySelector('.mobile-video-btn-text')!.textContent =
-					'Pause Video'),
-			  mobilePlayBtn
-					.querySelector('.mobile-video-play-icon')!
-					.classList.remove('active'),
-			  mobilePlayBtn
-					.querySelector('.mobile-video-pause-icon')!
-					.classList.add('active'))
-			: (((
-					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
-			  ).textContent = 'Play Video'),
-			  (document.querySelector('.mobile-video-btn-text')!.textContent =
-					'Play Video'),
-			  mobilePlayBtn
-					.querySelector('.mobile-video-play-icon')!
-					.classList.add('active'),
-			  mobilePlayBtn
-					.querySelector('.mobile-video-pause-icon')!
-					.classList.remove('active'));
+players.forEach((player) => {
+	player.on('play', () => {
+		player.elements.container.querySelector('.cd-video-btn-text')!.textContent =
+			'Pause Video';
+		// 			? (((
+		// 					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
+		// 			  ).textContent = 'Pause Video'),
+		// 			  (document.querySelector('.mobile-video-btn-text')!.textContent =
+		// 					'Pause Video'),
+		// 			  mobilePlayBtn
+		// 					.querySelector('.mobile-video-play-icon')!
+		// 					.classList.remove('active'),
+		// 			  mobilePlayBtn
+		// 					.querySelector('.mobile-video-pause-icon')!
+		// 					.classList.add('active'))
+		// 			: (((
+		// 					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
+		// 			  ).textContent = 'Play Video'),
+		// 			  (document.querySelector('.mobile-video-btn-text')!.textContent =
+		// 					'Play Video'),
+		// 			  mobilePlayBtn
+		// 					.querySelector('.mobile-video-play-icon')!
+		// 					.classList.add('active'),
+		// 			  mobilePlayBtn
+		// 					.querySelector('.mobile-video-pause-icon')!
+		// 					.classList.remove('active'));
+	});
+	player.on('pause', () => {
+		player.elements.container.querySelector('.cd-video-btn-text')!.textContent =
+			'Play Video';
 	});
 });
+// const allVideos = document.querySelectorAll('.plyr--video');
+
+// allVideos.forEach((player) => {
+// 	if (player.parentElement?.classList.contains('home-main-vid-embed')) return;
+// 	player.addEventListener('click', () => {
+// 		(player.querySelector('.cd-video-btn-text')! as HTMLSpanElement)
+// 			.textContent === 'Play Video'
+// 			? (((
+// 					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
+// 			  ).textContent = 'Pause Video'),
+// 			  (document.querySelector('.mobile-video-btn-text')!.textContent =
+// 					'Pause Video'),
+// 			  mobilePlayBtn
+// 					.querySelector('.mobile-video-play-icon')!
+// 					.classList.remove('active'),
+// 			  mobilePlayBtn
+// 					.querySelector('.mobile-video-pause-icon')!
+// 					.classList.add('active'))
+// 			: (((
+// 					player.querySelector('.cd-video-btn-text')! as HTMLSpanElement
+// 			  ).textContent = 'Play Video'),
+// 			  (document.querySelector('.mobile-video-btn-text')!.textContent =
+// 					'Play Video'),
+// 			  mobilePlayBtn
+// 					.querySelector('.mobile-video-play-icon')!
+// 					.classList.add('active'),
+// 			  mobilePlayBtn
+// 					.querySelector('.mobile-video-pause-icon')!
+// 					.classList.remove('active'));
+// 	});
+// });
 //carousel
 const swiperNavBtns = document.querySelectorAll(
 	'.swiper-nav-btn'
@@ -115,9 +142,10 @@ const testimonialSwiper = new Swiper('.swiper', {
 });
 
 testimonialSwiper.on('slideChange', () => {
-	testimonialSwiper.slides[testimonialSwiper.activeIndex]
-		.querySelector('video')!
-		.pause();
+	// testimonialSwiper.slides[testimonialSwiper.activeIndex]
+	// 	.querySelector('video')!
+	// 	.pause();
+	players[testimonialSwiper.activeIndex].pause();
 	swiperNavBtns.forEach((btn) => {
 		if (btn.classList.contains('disabled')) {
 			btn.querySelector('.swiper-arrow-c')!.classList.add('disabled');
