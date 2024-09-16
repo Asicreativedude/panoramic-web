@@ -673,9 +673,8 @@ videoPopupClose.addEventListener('click', () => {
 
 //nav colors animations
 const nav = document.querySelector('.nav-s')!;
-const heroHeight = document.querySelector('.home-hero-s')!.clientHeight;
 window.addEventListener('scroll', () => {
-	if (window.scrollY > heroHeight) {
+	if (window.scrollY > 100) {
 		nav.querySelector('.nav-button')!.classList.remove('white');
 		nav.querySelector('.nav-logo-c')!.classList.remove('white');
 		nav.querySelector('.nav-logo-divider')!.classList.remove('white');
